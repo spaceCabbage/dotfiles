@@ -5,7 +5,6 @@
 ```
 chmod +x install.sh
 ./installapps.sh
-
 ```
 
 ## Aliases
@@ -45,7 +44,3 @@ chmod +x install.sh
 - `whatsmyip` - Shows both internal and external IP addresses.
 - `ftext` - Searches for text in all files in the current directory.
 - `cpp` - Copies a file with a progress bar.
-
-```
-
-```

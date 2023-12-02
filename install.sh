@@ -35,4 +35,6 @@ link_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 link_file "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 link_file "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
 
-cowsay "All done!"
+echo -------------
+echo "All done!"
+echo -------------
