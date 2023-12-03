@@ -1,2 +1,6 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+-- My Fresh nvim config
+
+-- imports
+require("options")
+require("plugins")
+require("keymaps")
