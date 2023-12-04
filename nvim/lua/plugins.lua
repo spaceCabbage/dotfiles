@@ -21,15 +21,42 @@ require("lazy").setup({
         end,
     },
     {
-      "folke/which-key.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "c",
+                    "lua",
+                    "vim",
+                    "go",
+                    "vimdoc",
+                    "query",
+                    "javascript",
+                    "typescript",
+                    "vue",
+                    "python",
+                    "bash",
+                    "css",
+                    "html",
+                    "json",
+                    "rust"
+                },
+                sync_install = false,
+                auto_install = true,
+                highlight = {
+                    enable = true,
+                },
+            })
+        end,
+    },
+    {
+        "folke/which-key.nvim",
       event = "VeryLazy",
       init = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 300
       end,
-      opts = {
-        -- your configuration comes here
-      }
+      opts = {}
     },
 
     {
