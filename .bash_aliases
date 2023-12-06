@@ -29,6 +29,7 @@ alias gp="git pull"
 alias gP="git push"
 alias ga="git add *"
 
+# download torrent magnet 
 alias torrent='aria2c --max-connection-per-server=16 --split=16 --continue --dir="$HOME/Downloads" --enable-dht=true --enable-peer-exchange=true --seed-time=0 --console-log-level=inf'
 
 # javascript

@@ -2,6 +2,7 @@
   "gruvbox.nvim": { "branch": "main", "commit": "0940564208a490c173216c3b7d2188b0a5ad3491" },
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "230ff118613fa07138ba579b89d13ec2201530b9" },
+  "neorg": { "branch": "main", "commit": "bf3daa2229c60f92f48ac6d7db3049b65fd01371" },
   "nui.nvim": { "branch": "main", "commit": "1d044afde83e73c56de8e176615a4a6e7c8cf0e3" },
   "nvim-treesitter": { "branch": "master", "commit": "0791b5ebb590a2d44e20640c52679df1fc42e8ab" },
   "nvim-web-devicons": { "branch": "master", "commit": "5efb8bd06841f91f97c90e16de85e96d57e9c862" },
