@@ -64,5 +64,7 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 
 # Cargo
-export PATH=$PATH:/home/yehuda/.local/bin
-. "$HOME/.cargo/env"
+#export PATH=$PATH:/home/yehuda/.local/bin
+#. "$HOME/.cargo/env"
+#
+# neofetch

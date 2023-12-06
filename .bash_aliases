@@ -1,18 +1,19 @@
 ##### ALIAS MASTER FILE ######
 
 # general
-alias install="sudo nala install"
-alias update="sudo nala update"
-alias upgrade="sudo nala upgrade -y"
-alias ebrc='nvim ~/.bashrc'
+# alias install="sudo nala install"
+# alias update="sudo nala update"
+#alias upgrade="sudo nala upgrade -y"
+alias eb='nvim ~/.bashrc'
 alias ll="exa -lha --icons --git --group-directories-first"
 alias ls="exa -lh --icons --no-permissions --no-user"
-alias cdgit="cd ~/dev/"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose ' # force remove directory
 alias grep="/usr/bin/grep"
 alias hh="hstr"
 alias cd="z"
+#alias code="vscodium"
+
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push'
