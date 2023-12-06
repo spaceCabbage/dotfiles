@@ -17,6 +17,8 @@ local mappings = {
 
   n = {
       name = "+Notes",
+      n = {"<cmd>Neorg workspace notes<CR>", "Open Neorg"},
+      h = {"<cmd>h neorg<CR>", "Neorg help"},
   },
 
   c = {

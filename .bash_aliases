@@ -18,8 +18,11 @@ alias cd="z"
 alias moon="ssh yehuda@moon.local"
 
 # Syncing
-alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push'
-alias syncdot='cd ~/Documents/dev/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push'
+alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
+alias sn="syncnote"
+alias syncdot='cd ~/Documents/dev/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
+alias sd="syncdot"
+
 
 # git
 alias gc="git clone"
