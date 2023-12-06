@@ -14,6 +14,8 @@ alias hh="hstr"
 alias cd="z"
 #alias code="vscodium"
 
+# ssh
+alias moon="ssh yehuda@moon.local"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push'

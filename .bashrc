@@ -22,9 +22,7 @@ PROMPT_COMMAND='history -a'
 shopt -s checkwinsize
 
 # Ignore case on auto-completion
-# Note: bind used instead of sticking these in .inputrc
-if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
-
+bind 'set completion-ignore-case on'
 # Show auto-completion list automatically, without double tab
 if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
