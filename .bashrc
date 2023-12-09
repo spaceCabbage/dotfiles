@@ -48,6 +48,8 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+eval "$(navi widget bash)"
+eval "$(thefuck --alias)"
 
 # hstr
 shopt -s histappend             # append new history items to .bash_history
@@ -62,7 +64,7 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 
 # Cargo
-#export PATH=$PATH:/home/yehuda/.local/bin
-#. "$HOME/.cargo/env"
-#
+export PATH=$PATH:/home/yehuda/.local/bin
+. "$HOME/.cargo/env"
+
 # neofetch
