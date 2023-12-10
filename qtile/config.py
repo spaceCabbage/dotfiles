@@ -41,7 +41,7 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Key([mod], "b", lazy.spawn(firefox), desc="Launch browser"),
+    Key([mod], "b", lazy.spawn("firefox"), desc="Launch browser"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -54,7 +54,17 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
+
+        # Media keys for volume and brightness
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%")),
+
+    # Brightness keys (adjust the commands based on your hardware compatibility)
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -82,11 +92,67 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
+colors_gruvbox = {
+    'dark0_hard': '#1d2021',
+    'dark0': '#282828',
+    'dark0_soft': '#32302f',
+    'dark1': '#3c3836',
+    'dark2': '#504945',
+    'dark3': '#665c54',
+    'dark4': '#7c6f64',
+    'dark4_256': '#7c6f64',
+
+    'gray_245': '#928374',
+    'gray_244': '#928374',
+
+    'light0_hard': '#f9f5d7',
+    'light0': '#fbf1c7',
+    'light0_soft': '#f2e5bc',
+    'light1': '#ebdbb2',
+    'light2': '#d5c4a1',
+    'light3': '#bdae93',
+    'light4': '#a89984',
+    'light4_256': '#a89984',
+
+    'bright_red': '#fb4934',
+    'bright_green': '#b8bb26',
+    'bright_yellow': '#fabd2f',
+    'bright_blue': '#83a598',
+    'bright_purple': '#d3869b',
+    'bright_aqua': '#8ec07c',
+    'bright_orange': '#fe8019',
+
+    'neutral_red': '#cc241d',
+    'neutral_green': '#98971a',
+    'neutral_yellow': '#d79921',
+    'neutral_blue': '#458588',
+    'neutral_purple': '#b16286',
+    'neutral_aqua': '#689d6a',
+    'neutral_orange': '#d65d0e',
+
+    'faded_red': '#9d0006',
+    'faded_green': '#79740e',
+    'faded_yellow': '#b57614',
+    'faded_blue': '#076678',
+    'faded_purple': '#8f3f71',
+    'faded_aqua': '#427b58',
+    'faded_orange': '#af3a03',
+}
+
+colors = {
+    'fg': colors_gruvbox['light2'],
+    'bg': colors_gruvbox['dark0'],
+    'h': colors_gruvbox['neutral_blue'],
+    'b': colors_gruvbox['faded_green'],
+    'sep': colors_gruvbox['dark4'],
+}
+
 layout_theme = {
-        "border_width": 1,
-        "margin": 10,
-        "border_focus": "FFFFFF",
-        "border_normal": "CCCCCC"
+        "border_width": 2,
+        "margin": 6,
+        "border_focus": colors["b"],
+        "border_normal": colors["sep"],
         }
 
 layouts = [
@@ -117,19 +183,15 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                # widget.CurrentLayout(),
                 widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
+                # widget.WindowName(),
+                widget.Spacer(length=bar.STRETCH),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                # widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 widget.StatusNotifier(),
                 widget.CPU(),
                 widget.Memory(),
@@ -145,18 +207,12 @@ screens = [
                     notify_below=20),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                # widget.QuickExit(),
                 ],
             30,
             background=["#000000.60"],
-            margin=[8,8,0,8],
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            margin=[6,6,0,6],
         ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
     ),
 ]
 
@@ -175,7 +231,6 @@ floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
     float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
@@ -188,9 +243,6 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
 auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
@@ -200,6 +252,7 @@ wl_input_rules = None
 def autostart():
     path = "/home/yehuda/.config/qtile/autostart.sh"
     subprocess.Popen([path])
+    os.system('numlockx on')
 
 
 

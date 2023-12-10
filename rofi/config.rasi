@@ -1,0 +1,15 @@
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+configuration {
+    display-drun: "Apps";
+    display-windows: "Windows";
+    drun-display-format: "{icon} {name}";
+    show-icons: true;
+    icon-theme: "Papirus";
+}
+
+* {
+    border: 0;
+    margin: 2;
+    padding: 0;
+    spacing: 0;
+}
