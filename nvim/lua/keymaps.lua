@@ -24,6 +24,13 @@ local mappings = {
   c = {
     name = "+Code",
   },
+  s = {
+    name = "+Select",
+    s = {name = "Start seletion"},
+    i = {name = "Increment selection"},
+    c = {name = "Select by scope"},
+    d = {name = "Decrement selection"},
+  }
 }
 
 -- Setup which-key

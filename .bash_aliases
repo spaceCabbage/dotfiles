@@ -20,8 +20,10 @@ alias moon="ssh yehuda@moon.local"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
+alias pn='cd ~/Documents/notes && git pull && bd'
 alias sn="syncnote"
 alias syncdot='cd ~/Documents/dev/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
+alias pd='cd ~/Documents/dev/dotfiles/ && git pull && bd'
 alias sd="syncdot"
 
 
@@ -38,9 +40,12 @@ alias torrent='aria2c --max-connection-per-server=16 --split=16 --continue --dir
 
 # javascript
 alias nrd="npm run dev"
+alias nrb="npm run build"
 alias ni="npm i"
 
 # python
 alias senv="source .env/bin/activate"
 alias pipi="python3 -m pip install -r req.txt"
-alias djs="python3 manage.py runserver"
+alias djr="python3 manage.py runserver"
+alias djmm="python3 manage.py makemigrations"
+alias djm="python3 manage.py migrate"
