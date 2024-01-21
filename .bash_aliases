@@ -13,7 +13,7 @@ alias grep="/usr/bin/grep"
 alias hh="hstr"
 alias cd="z"
 #alias code="vscodium"
-alias cat="bat"
+alias cat="bat -P"
 
 # ssh
 alias moon="ssh yehuda@moon"

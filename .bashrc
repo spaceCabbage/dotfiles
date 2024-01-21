@@ -68,4 +68,4 @@ export PATH=$PATH:/home/yehuda/.local/bin
 . "$HOME/.cargo/env"
 
 # neofetch
-fortune
+# fortune
