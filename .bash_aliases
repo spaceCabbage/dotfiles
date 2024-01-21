@@ -16,7 +16,7 @@ alias cd="z"
 alias cat="bat"
 
 # ssh
-alias moon="ssh yehuda@moon.local"
+alias moon="ssh yehuda@moon"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
