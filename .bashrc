@@ -48,8 +48,8 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-eval "$(navi widget bash)"
-eval "$(thefuck --alias)"
+#eval "$(navi widget bash)"
+#eval "$(thefuck --alias)"
 
 # hstr
 shopt -s histappend             # append new history items to .bash_history

@@ -4,7 +4,8 @@
 # alias install="sudo nala install"
 # alias update="sudo nala update"
 #alias upgrade="sudo nala upgrade -y"
-alias eb='nvim ~/.bashrc'
+alias ebrc='nvim ~/.bashrc'
+alias sbrc='source ~/.bashrc'
 alias ll="exa -lha --icons --git --group-directories-first"
 alias ls="exa -lh --icons --no-permissions --no-user"
 alias bd='cd "$OLDPWD"'
@@ -16,14 +17,14 @@ alias cd="z"
 alias cat="bat -P"
 
 # ssh
-alias moon="ssh yehuda@moon"
+alias moon="ssh yehuda@moon.local"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
 alias pn='cd ~/Documents/notes && git pull && bd'
 alias sn="syncnote"
-alias syncdot='cd ~/Documents/dev/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
-alias pd='cd ~/Documents/dev/dotfiles/ && git pull && bd'
+alias syncdot='cd ~/Documents/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
+alias pd='cd ~/Documents/dotfiles/ && git pull && bd'
 alias sd="syncdot"
 
 
