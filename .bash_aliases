@@ -5,6 +5,7 @@
 # alias update="sudo nala update"
 #alias upgrade="sudo nala upgrade -y"
 alias ebrc='nvim ~/.bashrc'
+alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
 alias ll="exa -lha --icons --git --group-directories-first"
 alias ls="exa -lh --icons --no-permissions --no-user"
