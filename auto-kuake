@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function loadtab {
+    cmd="qdbus org.kde.yakuake $1"
+    eval $cmd &> /dev/null
+    sleep 0.5
+}
+
+loadtab "/yakuake/sessions org.kde.yakuake.addSession"
+loadtab "/yakuake/sessions org.kde.yakuake.addSession"
+
+loadtab "/yakuake/tabs org.kde.yakuake.setTabTitle 0 Home"
+loadtab "/yakuake/tabs org.kde.yakuake.setTabTitle 1 btop"
+
+loadtab "/Sessions/1 org.kde.konsole.Session.sendText 'btop'"
+
+

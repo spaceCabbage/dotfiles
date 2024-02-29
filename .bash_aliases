@@ -1,9 +1,6 @@
 ##### ALIAS MASTER FILE ######
 
 # general
-# alias install="sudo nala install"
-# alias update="sudo nala update"
-#alias upgrade="sudo nala upgrade -y"
 alias ebrc='nvim ~/.bashrc'
 alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
@@ -12,14 +9,12 @@ alias ls="exa -lh --icons --no-permissions --no-user"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose ' # force remove directory
 alias grep="/usr/bin/grep"
-alias hh="hstr"
 alias cd="z"
-#alias code="vscodium"
 alias cat="bat -P"
 alias btop='btop --utf-force'
 
 # ssh
-alias moon="ssh yehuda@moon.local"
+alias moon="ssh yehuda@10.100.102.2"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
@@ -63,4 +58,6 @@ alias ts='sudo tailscale status'
 alias checkwifi='ping 8.8.8.8'
 
 
+# Wayland use nvidia gpu for app
+alias gpu="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
