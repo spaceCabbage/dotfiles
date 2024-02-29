@@ -28,9 +28,6 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 echo "linking dotfiles"
 link_file "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
 link_file "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
-link_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-link_file "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
-link_file "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
 
 echo -------------
 echo "All done!"
