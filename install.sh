@@ -8,9 +8,6 @@ fi
 
 echo "Installing all required packages"
 
-# sudo apt update
-# sudo apt install nala btop neovim zoxide hstr exa laygit git cowsay
-
 # Function to create a symbolic link with backup
 link_file() {
     if [ -L "$2" ]; then

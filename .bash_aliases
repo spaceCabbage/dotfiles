@@ -4,26 +4,9 @@
 alias ebrc='nvim ~/.bashrc'
 alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
-alias ll="exa -lha --icons --git --group-directories-first"
-alias ls="exa -lh --icons --no-permissions --no-user"
+alias ll="ls -la"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose ' # force remove directory
-alias grep="/usr/bin/grep"
-alias cd="z"
-alias cat="bat -P"
-alias btop='btop --utf-force'
-
-# ssh
-alias moon="ssh yehuda@10.100.102.2"
-
-# Syncing
-alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
-alias pn='cd ~/Documents/notes && git pull && bd'
-alias sn="syncnote"
-alias syncdot='cd ~/Documents/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
-alias pd='cd ~/Documents/dotfiles/ && git pull && bd'
-alias sd="syncdot"
-
 
 # git
 alias gc="git clone"
@@ -33,9 +16,6 @@ alias gp="git pull"
 alias gf="git fetch"
 alias gP="git push"
 alias ga="git add *"
-
-# download torrent magnet 
-alias torrent='aria2c --max-connection-per-server=16 --split=16 --continue --dir="$HOME/Downloads" --enable-dht=true --enable-peer-exchange=true --seed-time=0 --console-log-level=inf'
 
 # javascript
 alias nrd="npm run dev"
@@ -49,15 +29,9 @@ alias djr="python3 manage.py runserver"
 alias djmm="python3 manage.py makemigrations"
 alias djm="python4 manage.py migrate"
 
-
 # Network
 alias wmip='ip route | grep "default"'
 alias tu='sudo tailscale up'
 alias td='sudo tailscale down'
 alias ts='sudo tailscale status'
 alias checkwifi='ping 8.8.8.8'
-
-
-# Wayland use nvidia gpu for app
-alias gpu="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
-
