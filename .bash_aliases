@@ -4,8 +4,8 @@
 alias ebrc='nvim ~/.bashrc'
 alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
-alias ll="exa -lha --icons --git --group-directories-first"
-alias ls="exa -lh --icons --no-permissions --no-user"
+alias ll="eza -lha --icons --git --group-directories-first"
+alias ls="eza -lh --icons --no-permissions --no-user"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose ' # force remove directory
 alias grep="/usr/bin/grep"
@@ -47,7 +47,7 @@ alias senv="source .env/bin/activate"
 alias pipi="python3 -m pip install -r req.txt"
 alias djr="python3 manage.py runserver"
 alias djmm="python3 manage.py makemigrations"
-alias djm="python4 manage.py migrate"
+alias djm="python3 manage.py migrate"
 
 
 # Network
