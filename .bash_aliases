@@ -48,7 +48,7 @@ alias pipi="python3 -m pip install -r req.txt"
 alias djr="python3 manage.py runserver"
 alias djmm="python3 manage.py makemigrations"
 alias djm="python3 manage.py migrate"
-
+alias py="python3"
 
 # Network
 alias wmip='ip route | grep "default"'
