@@ -57,3 +57,8 @@ eval "$(zoxide init bash)"
 # Cargo
 export PATH=$PATH:/home/yehuda/.local/bin
 . "$HOME/.cargo/env"
+
+# Atac directory
+export ATAC_MAIN_DIR=~/Documents/atac/
+
+eval "$(gh copilot alias -- bash)"

@@ -14,7 +14,7 @@ alias cat="bat -P"
 alias btop='btop --utf-force'
 
 # ssh
-alias moon="ssh yehuda@10.100.102.2"
+alias moon="ssh yehuda@192.168.1.39"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
@@ -61,3 +61,6 @@ alias checkwifi='ping 8.8.8.8'
 # Wayland use nvidia gpu for app
 alias gpu="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
+
+# Atac (im not even sure why im i need this)
+alias aa="atac"

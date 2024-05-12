@@ -13,6 +13,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
+
 require("lazy").setup({
     {
         "ellisonleao/gruvbox.nvim", 
@@ -81,6 +83,27 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     {
+        "neovim/nvim-lspconfig",
+    },
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "mason.nvim" },
+        config = function()
+            require("mason-lspconfig").setup()
+            require("mason-lspconfig").setup_handlers({
+                function(server_name)
+                    require("lspconfig")[server_name].setup({})
+                end,
+            })
+        end, 
+    },
+    {
         "folke/which-key.nvim",
       event = "VeryLazy",
       init = function()
@@ -89,7 +112,6 @@ require("lazy").setup({
       end,
       opts = {}
     },
-
     {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
       dependencies = { 'nvim-lua/plenary.nvim' }
@@ -103,28 +125,6 @@ require("lazy").setup({
           "MunifTanjim/nui.nvim",
         }
     },
-    {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("neorg").setup {
-                load = {
-                    ["core.defaults"] = {}, -- Loads default behaviour
-                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.dirman"] = { -- Manages Neorg workspaces
-                    config = {
-                        workspaces = {
-                            notes = "~/Documents/notes/neorg",
-                        },
-                    },
-                },
-            },
-        }
-    end,
-},
-
-
 })
 
 
