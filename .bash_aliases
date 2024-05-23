@@ -12,6 +12,7 @@ alias grep="/usr/bin/grep"
 alias cd="z"
 alias cat="bat -P"
 alias btop='btop --utf-force'
+alias nv='nvim .'
 
 # ssh
 alias moon="ssh yehuda@192.168.1.39"
@@ -24,7 +25,6 @@ alias syncdot='cd ~/Documents/dotfiles/ && git add . && git commit -m "Update do
 alias pd='cd ~/Documents/dotfiles/ && git pull && bd'
 alias sd="syncdot"
 
-
 # git
 alias gc="git clone"
 alias gg="lazygit"
@@ -34,7 +34,7 @@ alias gf="git fetch"
 alias gP="git push"
 alias ga="git add *"
 
-# download torrent magnet 
+# download torrent magnet
 alias torrent='aria2c --max-connection-per-server=16 --split=16 --continue --dir="$HOME/Downloads" --enable-dht=true --enable-peer-exchange=true --seed-time=0 --console-log-level=inf'
 
 # javascript
@@ -57,10 +57,8 @@ alias td='sudo tailscale down'
 alias ts='sudo tailscale status'
 alias checkwifi='ping 8.8.8.8'
 
-
 # Wayland use nvidia gpu for app
 alias gpu="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
-
 
 # Atac (im not even sure why im i need this)
 alias aa="atac"

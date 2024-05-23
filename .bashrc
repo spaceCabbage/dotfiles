@@ -2,12 +2,12 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # source aliases
 if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 export EDITOR='nvim'
@@ -60,5 +60,3 @@ export PATH=$PATH:/home/yehuda/.local/bin
 
 # Atac directory
 export ATAC_MAIN_DIR=~/Documents/atac/
-
-eval "$(gh copilot alias -- bash)"
