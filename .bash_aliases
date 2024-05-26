@@ -62,3 +62,12 @@ alias gpu="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
 # Atac (im not even sure why im i need this)
 alias aa="atac"
+
+alias tx='tmux new-session -d -s Mainframe -n Editor; \
+    tmux send-keys -t Mainframe:Editor "nvim ." Enter; \
+    tmux new-window -t Mainframe -n Terminal -c "$PWD"; \
+    tmux split-window -h -t Mainframe:Terminal; \
+    tmux rename-pane -t Mainframe:Terminal.1 "Client"; \
+    tmux rename-pane -t Mainframe:Terminal.2 "Server"; \
+    tmux select-window -t Mainframe:Editor; \
+    tmux attach -t Mainframe'
