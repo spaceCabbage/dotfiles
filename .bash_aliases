@@ -44,6 +44,7 @@ alias ni="npm i"
 
 # python
 alias senv="source .env/bin/activate"
+alias svenv="source venv/bin/activate"
 alias pipi="python3 -m pip install -r req.txt"
 alias djr="python3 manage.py runserver"
 alias djmm="python3 manage.py makemigrations"
