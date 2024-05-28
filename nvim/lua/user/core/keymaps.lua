@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 local km = vim.keymap
 
 km.set("i", "kj", "<esc>", { desc = "Exit insert mode with kj" })
-km.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+km.set("n", "<leader>fx", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- incrementing nums
 km.set("n", "<leader>+", "<C-a>", { desc = "Increment" })

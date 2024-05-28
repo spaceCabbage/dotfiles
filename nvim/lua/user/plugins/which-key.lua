@@ -9,7 +9,8 @@ return {
 		wk.register({
 			c = { name = "Code" },
 			e = { name = "Explorer" },
-			f = { name = "Files" },
+			f = { name = "Find" },
+			n = { name = "Notes" },
 			g = {
 				name = "Git",
 				h = { name = "hunk" },
