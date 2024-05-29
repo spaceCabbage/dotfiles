@@ -7,6 +7,7 @@ return {
 			mode = "tabs",
 			separator_style = "thin",
 			indicator = "underline",
+			always_show_bufferline = false,
 
 			offsets = {
 				{
