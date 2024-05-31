@@ -7,15 +7,9 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
-
-		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 		local keymap = vim.keymap -- for conciseness
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -25,24 +19,23 @@ return {
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
 
-				-- set keybinds
 				opts.desc = "Show LSP references"
-				keymap.set("n", "lR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				keymap.set("n", "<leader>lR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
 				opts.desc = "Go to declaration"
-				keymap.set("n", "lD", vim.lsp.buf.declaration, opts) -- go to declaration
+				keymap.set("n", "<leader>lD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 				opts.desc = "Show LSP definitions"
-				keymap.set("n", "ld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+				keymap.set("n", "<leader>ld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 				opts.desc = "Show LSP implementations"
-				keymap.set("n", "li", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+				keymap.set("n", "<leader>li", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
 
 				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "lt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+				keymap.set("n", "<leader>lt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
-				keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
@@ -54,10 +47,10 @@ return {
 				keymap.set("n", "<leader>cdl", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "cdp", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+				keymap.set("n", "<leader>cdp", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
 				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "cdn", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+				keymap.set("n", "<leader>cdn", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
 				opts.desc = "Show documentation for what is under cursor"
 				keymap.set("n", "ci", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -85,6 +78,7 @@ return {
 					capabilities = capabilities,
 				})
 			end,
+
 			["svelte"] = function()
 				-- configure svelte server
 				lspconfig["svelte"].setup({
@@ -98,6 +92,39 @@ return {
 							end,
 						})
 					end,
+				})
+			end,
+			["volar"] = function()
+				--configure Vue language server
+				lspconfig["volar"].setup({
+					capabilities = capabilities,
+					filetypes = { "vue" },
+					init_options = {
+						vue = {
+							hybridMode = false,
+						},
+						typescript = {
+							tsdk = "/home/yehuda/.nvm/versions/node/v21.6.2/lib/node_modules/typescript/lib",
+						},
+					},
+				})
+			end,
+			["tsserver"] = function()
+				lspconfig["tsserver"].setup({
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/home/yehuda/.nvm/versions/node/v21.6.2/lib/node_modules/typescript/lib",
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"typescript",
+						"vue",
+					},
 				})
 			end,
 			["graphql"] = function()
@@ -120,6 +147,7 @@ return {
 						"scss",
 						"less",
 						"svelte",
+						"vue",
 					},
 				})
 			end,
