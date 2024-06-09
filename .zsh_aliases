@@ -1,0 +1,5 @@
+unalias sbrc
+
+alias szrc='source ~/.zshrc'
+alias ezrc='nvim ~/.zshrc'
+
