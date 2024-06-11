@@ -1,3 +1,9 @@
+##### ZSH Aliases #####
+
+# these are sourced from ~/.zshrc adn get applied on top
+# of the default bash_aliases, use this to unalias things that
+# are not needed in zsh or to alias things that are zsh specific
+
 unalias sbrc
 
 alias szrc='source ~/.zshrc'

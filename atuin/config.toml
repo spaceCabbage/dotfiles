@@ -38,11 +38,11 @@
 
 ## which search mode to use
 ## possible values: prefix, fulltext, fuzzy, skim
-# search_mode = "fuzzy"
+search_mode = "fuzzy"
 
 ## which filter mode to use
 ## possible values: global, host, session, directory
-# filter_mode = "global"
+filter_mode = "global"
 
 ## With workspace filtering enabled, Atuin will filter for commands executed
 ## in any directory within a git repository tree (default: false)
@@ -60,18 +60,18 @@ workspaces = false
 
 ## which style to use
 ## possible values: auto, full, compact
-style = "compact"
+style = "full"
 
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
-inline_height = 20
+inline_height = 12
 
 ## Invert the UI - put the search bar at the top , Default to `false`
-# invert = false
+invert = true
 
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
-# show_preview = false
+# show_preview = true
 
 ## what to do when the escape key is pressed when searching
 ## possible values: return-original, return-query
@@ -84,7 +84,7 @@ inline_height = 20
 # word_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 ## number of context lines to show when scrolling by pages
-# scroll_context_lines = 1
+scroll_context_lines = 1
 
 ## use ctrl instead of alt as the shortcut modifier key for numerical UI shortcuts
 ## alt-0 .. alt-9
@@ -115,12 +115,12 @@ inline_height = 20
 ## Configure the maximum height of the preview to show.
 ## Useful when you have long scripts in your history that you want to distinguish
 ## by more than the first few lines.
-# max_preview_height = 4
+# max_preview_height = 8
 
 ## Configure whether or not to show the help row, which includes the current Atuin
 ## version (and whether an update is available), a keymap hint, and the total
 ## amount of commands in your history.
-# show_help = true
+show_help = false
 
 ## Defaults to true. This matches history against a set of default regex, and will not save it if we get a match. Defaults include
 ## 1. AWS key id
@@ -141,7 +141,7 @@ enter_accept = true
 ## keybinding is defined.  If this is set to "emacs", "vim-insert", or
 ## "vim-normal", the startup keymap mode in the Atuin search is forced to be
 ## the specified one.
-# keymap_mode = "auto"
+# keymap_mode = "vim-normal"
 
 ## Cursor style in each keymap mode.  If specified, the cursor style is changed
 ## in entering the cursor shape.  Available values are "default" and
@@ -160,15 +160,7 @@ enter_accept = true
 
 #[stats]
 # Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
-#common_subcommands = [
-#  "cargo",
-#  "go",
-#  "git",
-#  "npm",
-#  "yarn",
-#  "pnpm",
-#  "kubectl",
-#]
+common_subcommands = ["cargo", "go", "git", "tldr", "python3", "py", "npm"]
 #
 # Set commands that should be totally stripped and ignored from stats
 #common_prefix = ["sudo"]
