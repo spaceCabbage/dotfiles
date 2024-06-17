@@ -17,6 +17,7 @@ alias :q="exit"
 alias rg="rg --color=always --smart-case"
 alias cat="bat -P"
 alias nv='nvim .'
+alias hh=hstr
 
 # ssh
 alias moon="ssh yehuda@192.168.1.39"
