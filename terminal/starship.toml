@@ -1,6 +1,6 @@
 [username]
 show_always = true
-format = "[user](fg:#83a598) "
+format = "[${user}](fg:#83a598) "
 
 [hostname]
 # ssh_only = false
