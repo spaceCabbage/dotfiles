@@ -55,3 +55,5 @@ alias py="python3"
 
 # Network
 alias wmip='ip route | rg "default"'
+
+alias linutil="curl -fsSL https://christitus.com/linux | sh"
