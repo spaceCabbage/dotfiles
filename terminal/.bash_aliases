@@ -57,3 +57,11 @@ alias py="python3"
 alias wmip='ip route | rg "default"'
 
 alias linutil="curl -fsSL https://christitus.com/linux | sh"
+
+# Yay
+alias yq="yay -Qi"
+alias yl="yay -Qe"
+alias ys="yay -Ss"
+alias yi="yay -S"
+alias yr="yay -Rns"
+alias yc="yay -Yc"
