@@ -26,8 +26,8 @@ alias moon="ssh yehuda@192.168.1.39"
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
 alias pn='cd ~/Documents/notes && git pull && bd'
 alias sn="syncnote"
-alias syncdot='cd ~/Documents/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
-alias pd='cd ~/Documents/dotfiles/ && git pull && bd'
+alias syncdot='cd ~/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
+alias pd='cd ~/dotfiles/ && git pull && bd'
 alias sd="syncdot"
 
 # git
@@ -58,10 +58,3 @@ alias wmip='ip route | rg "default"'
 
 alias linutil="curl -fsSL https://christitus.com/linux | sh"
 
-# Yay
-alias yq="yay -Qi"
-alias yl="yay -Qe"
-alias ys="yay -Ss"
-alias yi="yay -S"
-alias yr="yay -Rns"
-alias yc="yay -Yc"
