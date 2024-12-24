@@ -4,6 +4,7 @@
 alias ebrc='nvim ~/.bashrc'
 alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
+alias stx="tmux source ~/.tmux.conf"
 
 alias ll="eza -lhaF --icons --git --group-directories-first"
 alias ls="eza -lhF --icons --no-permissions --no-user --color=always"
@@ -19,6 +20,10 @@ alias cat="bat -P"
 alias nv='nvim .'
 alias hh=hstr
 
+# DNF
+alias update='sudo dnf update -y --refresh'
+alias install='sudo dnf install'
+
 # ssh
 alias moon="ssh yehuda@192.168.1.39"
 
@@ -26,8 +31,8 @@ alias moon="ssh yehuda@192.168.1.39"
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
 alias pn='cd ~/Documents/notes && git pull && bd'
 alias sn="syncnote"
-alias syncdot='cd ~/Documents/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
-alias pd='cd ~/Documents/dotfiles/ && git pull && bd'
+alias syncdot='cd ~/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
+alias pd='cd ~/dotfiles/ && git pull && bd'
 alias sd="syncdot"
 
 # git
@@ -53,15 +58,28 @@ alias djmm="python3 manage.py makemigrations"
 alias djm="python3 manage.py migrate"
 alias py="python3"
 
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias dcb="dokcer compose up --build"
+
 # Network
 alias wmip='ip route | rg "default"'
 
 alias linutil="curl -fsSL https://christitus.com/linux | sh"
 
-# Yay
-alias yq="yay -Qi"
-alias yl="yay -Qe"
-alias ys="yay -Ss"
-alias yi="yay -S"
-alias yr="yay -Rns"
-alias yc="yay -Yc"
+# Solomon Shortcut
+alias sol='tmux has-session -t solomon 2>/dev/null || ( \
+    tmux new-session -d -s solomon -n terminal && \
+    tmux new-window -t solomon:2 -n dev && \
+    tmux new-window -t solomon:3 -n Editor -c "$HOME/Documents/dev/solomon" && \
+    tmux send-keys -t solomon:1 "clear" C-m && \
+    tmux send-keys -t solomon:2 "cd $HOME/Documents/dev/solomon/client && clear" C-m && \
+    tmux split-window -t solomon:2 -h -c "$HOME/Documents/dev/solomon/server" && \
+    tmux select-pane -t solomon:2.1 -T client && \
+    tmux select-pane -t solomon:2.2 -T server && \
+    tmux send-keys -t solomon:2.2 "senv && clear" C-m && \
+    tmux send-keys -t solomon:3 "clear" C-m \
+); tmux select-window -t solomon:2; tmux attach -t solomon'
+
+
+alias kill="tmux kill-session"
