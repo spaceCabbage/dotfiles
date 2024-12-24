@@ -13,6 +13,7 @@ alias cd="z"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose ' # force remove directory
 alias :q="exit"
+alias yy="yazi"
 
 alias rg="rg --color=always --smart-case"
 alias cat="bat -P"
