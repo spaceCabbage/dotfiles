@@ -45,3 +45,5 @@ function hstrnotiocsti {
 }
 if [[ $- =~ .*i.* ]]; then bind -x '"\C-r": "hstrnotiocsti"'; fi
 export HSTR_TIOCSTI=n
+export PATH=$PATH:$(go env GOPATH)/bin
+eval "$(direnv hook bash)"
