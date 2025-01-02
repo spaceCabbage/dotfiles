@@ -61,7 +61,7 @@ alias py="python3"
 
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
-alias dcb="dokcer compose up --build"
+alias dcb="docker compose up --build"
 
 # Network
 alias wmip='ip route | rg "default"'
