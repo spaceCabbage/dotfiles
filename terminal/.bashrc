@@ -27,7 +27,7 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init bash)"
 # eval "$(atuin init bash)"
-eval "$(zoxide init bash)"
+eval "$(zoxide init bash --cmd cd)"
 
 # Cargo
 export PATH=$PATH:/home/yehuda/.local/bin
@@ -47,3 +47,7 @@ if [[ $- =~ .*i.* ]]; then bind -x '"\C-r": "hstrnotiocsti"'; fi
 export HSTR_TIOCSTI=n
 export PATH=$PATH:$(go env GOPATH)/bin
 eval "$(direnv hook bash)"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
