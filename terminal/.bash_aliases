@@ -11,7 +11,7 @@ alias ll="eza -lhaF --icons --git --group-directories-first"
 alias ls="eza -lhF --icons --no-permissions --no-user --color=always"
 alias lc="eza -lhF --icons --no-permissions --no-user --color=always"
 
-alias cd="z"
+# alias cd="z"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose'
 alias yy="yazi"
