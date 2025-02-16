@@ -65,6 +65,7 @@ alias dcu="docker-compose up"
 alias dcud="docker-compose up -d"
 alias dcd="docker-compose down"
 alias dcb="docker compose up --build"
+alias lzd="lazydocker"
 
 # Network
 alias wmip='ip route | rg "default"'
