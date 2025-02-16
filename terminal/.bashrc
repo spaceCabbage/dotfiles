@@ -12,6 +12,7 @@ fi
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+export COMPOSE_BAKE=true
 
 # Disable the bell
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
@@ -27,7 +28,6 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init bash)"
 # eval "$(atuin init bash)"
-eval "$(zoxide init bash --cmd cd)"
 
 # Cargo
 export PATH=$PATH:/home/yehuda/.local/bin
@@ -51,3 +51,5 @@ eval "$(direnv hook bash)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(zoxide init bash --cmd cd)"
