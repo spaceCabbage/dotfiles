@@ -13,6 +13,7 @@ fi
 export EDITOR='nvim'
 export VISUAL='nvim'
 export COMPOSE_BAKE=true
+export _ZO_DOCTOR=0
 
 # Disable the bell
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
@@ -51,5 +52,6 @@ eval "$(direnv hook bash)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export CAPACITOR_ANDROID_STUDIO_PATH=/usr/bin/android-studio
 
 eval "$(zoxide init bash --cmd cd)"
