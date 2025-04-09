@@ -29,6 +29,7 @@ alias install='sudo dnf install'
 alias moon="ssh yehuda@192.168.1.39"
 alias ribis="ssh -p 2222 ribis@145.223.116.211"
 alias club="ssh cork@club.corkandcellar.net -p 2222"
+alias kepler="ssh -p 2222 yehuda@kepler"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
