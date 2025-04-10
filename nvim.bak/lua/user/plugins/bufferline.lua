@@ -8,12 +8,19 @@ return {
 			separator_style = "thin",
 			indicator = "underline",
 			always_show_bufferline = false,
-
 			offsets = {
 				{
-					filetype = "NvimTree",
+					filetype = "NeoTree",
 					text_align = "left",
 					text = "Explorer",
+					highligh = "Directory",
+				},
+			},
+			highlights = {
+				fill = {
+					background = {
+						bg = "nonejj",
+					},
 				},
 			},
 		},
