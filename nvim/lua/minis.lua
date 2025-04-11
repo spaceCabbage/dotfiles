@@ -6,16 +6,12 @@ return { -- Collection of various small independent plugins/modules
     }
     require('mini.surround').setup()
 
-    --    local statusline = require 'mini.statusline'
-    --  statusline.setup {
-    --  use_icons = true,
-    --}
+    require('mini.comment').setup {
+      version = '*',
+    }
 
-    ---@diagnostic disable-next-line: duplicate-set-field
-    --  statusline.section_location = function()
-    --  return '%2l:%-2v'
-    --end
-    -- ... and there is more!
-    --  Check out: https://github.com/echasnovski/mini.nvim
+    require('mini.move').setup {
+      version = '*',
+    }
   end,
 }

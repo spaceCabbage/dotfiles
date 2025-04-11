@@ -26,6 +26,8 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button('f', ' Find File', ':Telescope find_files<CR>'),
       dashboard.button('e', ' New File', ':ene <BAR> startinsert<CR>'),
+      dashboard.button('r', ' Resume Session', ':SessionRestore<CR>'),
+      dashboard.button('s', '󰺄 Search Sessions', ':SessionSearch<CR>'),
       dashboard.button('q', '󰈆 Quit', ':qa<CR>'),
     }
 
@@ -51,19 +53,5 @@ return {
     }
 
     alpha.setup(dashboard.opts)
-
-    if vim.fn.argc() > 0 then
-      local arg0 = vim.fn.argv()[1]
-      if vim.fn.isdirectory(arg0) == 1 then
-        -- Delay slightly to ensure Alpha is fully loaded.
-        vim.defer_fn(function()
-          require('neo-tree.command').execute {
-            toggle = true,
-            reveal = true,
-            dir = arg0,
-          }
-        end, 100)
-      end
-    end
   end,
 }
