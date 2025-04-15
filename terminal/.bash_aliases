@@ -6,6 +6,7 @@ alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
 alias stx="tmux source ~/.tmux.conf"
 alias ncdu="ncdu --color dark -t 10"
+alias shutdown="shutdown now"
 
 alias ll="eza -lhaF --icons --git --group-directories-first"
 alias ls="eza -lhF --icons --no-permissions --no-user --color=always"

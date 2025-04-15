@@ -7,6 +7,5 @@ return {
     suppressed_dirs = { '~/', '~/Downloads', '/' },
     auto_restore = false,
     bypass_save_filetypes = { 'alpha' },
-    use_git_branch = true,
   },
 }
