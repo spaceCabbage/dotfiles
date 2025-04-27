@@ -43,7 +43,7 @@ alias sd="syncdot"
 # git
 alias gc="git clone"
 alias gg="lazygit"
-alias gs="git status"
+alias gs="git status --short"
 alias gf="git fetch"
 alias gp="git push"
 alias ga="git add *"
