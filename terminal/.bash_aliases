@@ -49,7 +49,7 @@ alias gs="git status --short"
 alias gf="git fetch"
 alias gp="git push"
 alias ga="git add *"
-
+alias graph="serie"
 # javascript
 alias nrd="npm run dev"
 alias nrb="npm run build"
