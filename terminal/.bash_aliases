@@ -7,7 +7,7 @@ alias sbrc='source ~/.bashrc'
 alias stx="tmux source ~/.tmux.conf"
 alias ncdu="ncdu --color dark -t 10"
 alias shutdown="shutdown now"
-alias dc="cd"
+alias o="ollama"alias dc="cd"
 alias sl="ls"
 alias ll="eza -lhaF --icons --git --group-directories-first"
 alias ls="eza -lhF --icons --no-permissions --no-user --color=always"
@@ -32,6 +32,7 @@ alias moon="ssh yehuda@192.168.1.39"
 alias ribis="ssh -p 2222 ribis@145.223.116.211"
 alias club="ssh cork@club.corkandcellar.net -p 2222"
 alias kepler="ssh -p 2222 yehuda@kepler"
+alias apollo="ssh yehuda@192.168.1.40"
 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
