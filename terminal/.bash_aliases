@@ -53,7 +53,7 @@ alias ga="git add *"
 alias nrd="npm run dev"
 alias nrb="npm run build"
 alias ni="npm i"
-
+alias ios="ionic serve --external"
 # python
 alias senv="source .env/bin/activate"
 alias svenv="source venv/bin/activate"

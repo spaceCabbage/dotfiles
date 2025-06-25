@@ -37,7 +37,7 @@ export PATH=$PATH:/home/yehuda/.local/bin
 export HSTR_CONFIG=hicolor      # get more colors
 shopt -s histappend             # append new history items to .bash_history
 export HISTCONTROL=ignorespace  # leading space hides commands from history
-export HISTFILESIZE=10000       # increase history file size (default is 500)
+export HISTFILESIZE=50000       # increase history file size (default is 500)
 export HISTSIZE=${HISTFILESIZE} # increase history size (default is 500)
 export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 function hstrnotiocsti {
@@ -55,3 +55,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export CAPACITOR_ANDROID_STUDIO_PATH=/usr/bin/android-studio
 
 eval "$(zoxide init bash --cmd cd)"
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
