@@ -54,5 +54,10 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export CAPACITOR_ANDROID_STUDIO_PATH=/usr/bin/android-studio
 
-eval "$(zoxide init bash --cmd cd)"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+
+eval "$(zoxide init bash --cmd cd)"
