@@ -29,6 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(starship init bash)"
 # eval "$(atuin init bash)"
+eval "$(tailscale completion bash)"
 
 # Cargo
 export PATH=$PATH:/home/yehuda/.local/bin
@@ -61,3 +62,5 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 eval "$(zoxide init bash --cmd cd)"
+
+alias claude="/home/yehuda/.claude/local/claude"

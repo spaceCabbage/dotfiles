@@ -7,6 +7,7 @@ alias sbrc='source ~/.bashrc'
 alias stx="tmux source ~/.tmux.conf"
 alias ncdu="ncdu --color dark -t 10"
 alias shutdown="shutdown now"
+alias ts="sudo tailscale"
 alias o="ollama"alias dc="cd"
 alias sl="ls"
 alias ll="eza -lhaF --icons --git --group-directories-first"
