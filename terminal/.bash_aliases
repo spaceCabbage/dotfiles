@@ -66,12 +66,15 @@ alias djmm="python3 manage.py makemigrations"
 alias djm="python3 manage.py migrate"
 alias py="python3"
 
-# Docker
-alias dcu="docker-compose up"
-alias dcud="docker-compose up -d"
-alias dcd="docker-compose down"
-alias dcb="docker compose up --build"
+# Podman (formerly Docker)
+alias dcu="podman-compose up"
+alias dcud="podman-compose up -d"
+alias dcd="podman-compose down"
+alias dcb="podman-compose up --build"
 alias lzd="lazydocker"
+# Additional podman aliases for convenience
+alias docker="podman"
+alias docker-compose="podman-compose"
 
 # Network
 alias wmip='ip route | rg "default"'
