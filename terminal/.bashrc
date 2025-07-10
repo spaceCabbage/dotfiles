@@ -18,6 +18,7 @@ export _ZO_DOCTOR=0
 # Disable the bell
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 
+export HISTCONTROL=ignoredups
 PROMPT_COMMAND='history -a'
 shopt -s checkwinsize
 bind 'set completion-ignore-case on'
