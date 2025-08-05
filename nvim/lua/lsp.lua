@@ -144,7 +144,7 @@ return {
         -- gopls = {},
         pyright = {},
         -- rust_analyzer = {},
-        ts_ls = {},
+        typescript_language_server = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
