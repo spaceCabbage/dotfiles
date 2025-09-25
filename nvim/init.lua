@@ -83,5 +83,4 @@ require('lazy').setup {
   require 'indents',
   require 'tabs',
   require 'hints',
-  require 'notes',
 }
