@@ -33,8 +33,8 @@ alias moon="ssh yehuda@192.168.1.39"
 alias ribis="ssh -p 2222 ribis@145.223.116.211"
 alias club="ssh cork@club.corkandcellar.net -p 2222"
 alias kepler="ssh -p 2222 yehuda@kepler"
-alias apollo="ssh yehuda@192.168.1.40"
-
+alias apollo="ssh yehuda@10.0.0.39"
+alias ray="ssh ray@api.rayati.date -p 2222" 
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
 alias pn='cd ~/Documents/notes && git pull && bd'
@@ -72,9 +72,6 @@ alias dcud="podman-compose up -d"
 alias dcd="podman-compose down"
 alias dcb="podman-compose up --build"
 alias lzd="lazydocker"
-# Additional podman aliases for convenience
-alias docker="podman"
-alias docker-compose="podman-compose"
 
 # Network
 alias wmip='ip route | rg "default"'

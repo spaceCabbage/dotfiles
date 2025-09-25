@@ -65,3 +65,6 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 eval "$(zoxide init bash --cmd cd)"
 
 alias claude="/home/yehuda/.claude/local/claude"
+export ANDROID_HOME=~/Android/Sdk
+export ANDROID_SDK_ROOT=~/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
