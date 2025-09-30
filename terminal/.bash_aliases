@@ -2,6 +2,7 @@
 
 # general
 alias ebrc='nvim ~/.bashrc'
+
 alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
 alias stx="tmux source ~/.tmux.conf"
@@ -10,9 +11,9 @@ alias shutdown="shutdown now"
 alias ts="sudo tailscale"
 alias o="ollama"alias dc="cd"
 alias sl="ls"
-alias ll="eza -lhaF --icons --git --group-directories-first"
-alias ls="eza -lhF --icons --no-permissions --no-user --color=always"
-alias lc="eza -lhF --icons --no-permissions --no-user --color=always"
+alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
+alias ls="eza --icons --no-permissions --no-user --color=always"
+alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
 
 # alias cd="z"
 alias bd='cd "$OLDPWD"'
