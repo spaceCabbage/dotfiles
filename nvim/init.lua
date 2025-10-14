@@ -31,15 +31,90 @@ vim.opt.confirm = true
 vim.opt.relativenumber = true
 
 -- [[ Basic Keymaps ]]
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', '<C-d>', '<C-d>zz>', { desc = 'Move down a smidge' })
-vim.keymap.set('n', '<C-u>', '<C-u>zz>', { desc = 'Move up a smidge' })
+
+-- Window navigation
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Focus left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Focus right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Focus lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Focus upper window' })
+
+-- Better scrolling (center cursor)
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down (centered)' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up (centered)' })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result (centered)' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result (centered)' })
+
+-- Better indenting
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left (keep selection)' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right (keep selection)' })
+
+-- Move lines up/down
+vim.keymap.set('n', '<A-j>', '<cmd>m .+1<CR>==', { desc = 'Move line down' })
+vim.keymap.set('n', '<A-k>', '<cmd>m .-2<CR>==', { desc = 'Move line up' })
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+
+-- Better paste (don't replace clipboard)
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste without yanking' })
+
+-- Quick save
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save file' })
+vim.keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>a', { desc = 'Save file' })
+
+-- Window management
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' })
+vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split window horizontally' })
+vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Equal window sizes' })
+vim.keymap.set('n', '<leader>wc', '<cmd>close<CR>', { desc = 'Close window' })
+vim.keymap.set('n', '<leader>wo', '<cmd>only<CR>', { desc = 'Close other windows' })
+
+-- Diagnostic navigation
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show Diagnostic' })
+
+-- Quickfix & Location list
+vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'Previous Quickfix' })
+vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'Next Quickfix' })
+vim.keymap.set('n', '<leader>qo', '<cmd>copen<CR>', { desc = 'Open Quickfix' })
+vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = 'Close Quickfix' })
+vim.keymap.set('n', '<leader>lo', '<cmd>lopen<CR>', { desc = 'Open Location List' })
+vim.keymap.set('n', '<leader>lc', '<cmd>lclose<CR>', { desc = 'Close Location List' })
+
+-- Buffer management
+vim.keymap.set('n', '<leader>ba', '<cmd>%bd|e#<CR>', { desc = 'Close All Buffers' })
+vim.keymap.set('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close Other Buffers' })
+vim.keymap.set('n', '<leader>bh', '<cmd>BufferLineCloseLeft<CR>', { desc = 'Close Buffers to Left' })
+vim.keymap.set('n', '<leader>bl', '<cmd>BufferLineCloseRight<CR>', { desc = 'Close Buffers to Right' })
+
+-- Toggle options
+vim.keymap.set('n', '<leader>tn', '<cmd>set number!<CR>', { desc = 'Toggle Line Numbers' })
+vim.keymap.set('n', '<leader>tr', '<cmd>set relativenumber!<CR>', { desc = 'Toggle Relative Numbers' })
+vim.keymap.set('n', '<leader>tw', '<cmd>set wrap!<CR>', { desc = 'Toggle Line Wrap' })
+vim.keymap.set('n', '<leader>ts', '<cmd>set spell!<CR>', { desc = 'Toggle Spell Check' })
+vim.keymap.set('n', '<leader>tc', function()
+  if vim.wo.colorcolumn == '' then
+    vim.wo.colorcolumn = '80'
+  else
+    vim.wo.colorcolumn = ''
+  end
+end, { desc = 'Toggle Colorcolumn' })
+
+-- Terminal toggles (using vim's built-in terminal)
+vim.keymap.set('n', '<leader>tt', '<cmd>split | terminal<CR>i', { desc = 'Toggle Terminal (Horizontal)' })
+vim.keymap.set('n', '<leader>tv', '<cmd>vsplit | terminal<CR>i', { desc = 'Toggle Terminal (Vertical)' })
+vim.keymap.set('n', '<leader>tf', '<cmd>terminal<CR>i', { desc = 'Toggle Floating Terminal' })
+
+-- Misc useful keymaps
+vim.keymap.set('n', '<leader>x', '<cmd>bd<CR><cmd>close<CR>', { desc = 'Close Buffer & Window' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to Clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank Line to Clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>D', '"_d', { desc = 'Delete Without Yank' })
+vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Join lines (keep cursor)' })
+vim.keymap.set('v', 'Q', ':norm @q<CR>', { desc = 'Replay macro on selection' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',

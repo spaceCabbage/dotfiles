@@ -39,15 +39,24 @@ return {
             })
           end
 
-          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+          -- LSP keymaps with <leader>c prefix for code actions
+          map('<leader>cr', vim.lsp.buf.rename, 'Rename Symbol')
+          map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
+          map('<leader>cd', require('telescope.builtin').lsp_definitions, 'Go to Definition')
+          map('<leader>cD', vim.lsp.buf.declaration, 'Go to Declaration')
+          map('<leader>ci', require('telescope.builtin').lsp_implementations, 'Go to Implementation')
+          map('<leader>ct', require('telescope.builtin').lsp_type_definitions, 'Go to Type Definition')
+          map('<leader>cR', require('telescope.builtin').lsp_references, 'Find References')
+          map('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+          map('<leader>cS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+
+          -- Keep classic vim keymaps for quick navigation
+          map('gd', require('telescope.builtin').lsp_definitions, 'Go to Definition')
+          map('gD', vim.lsp.buf.declaration, 'Go to Declaration')
+          map('gr', require('telescope.builtin').lsp_references, 'Go to References')
+          map('gI', require('telescope.builtin').lsp_implementations, 'Go to Implementation')
+          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('<leader>k', vim.lsp.buf.signature_help, 'Signature Help')
 
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method

@@ -1,15 +1,24 @@
 return {
   'akinsho/bufferline.nvim',
-  event = 'BufWinEnter', -- Load before buffers are actually read. You can tweak this as needed.
-  dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional: For file icons
+  event = 'BufWinEnter',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  keys = {
+    { '<leader>bn', '<cmd>BufferLineCycleNext<CR>', desc = 'Next Buffer' },
+    { '<leader>bp', '<cmd>BufferLineCyclePrev<CR>', desc = 'Previous Buffer' },
+    { '<leader>bc', '<cmd>bdelete<CR>', desc = 'Close Buffer' },
+    { '<leader>bC', '<cmd>BufferLinePickClose<CR>', desc = 'Pick & Close Buffer' },
+    { '<leader>bP', '<cmd>BufferLinePick<CR>', desc = 'Pick Buffer' },
+    { '[b', '<cmd>BufferLineCyclePrev<CR>', desc = 'Previous Buffer' },
+    { ']b', '<cmd>BufferLineCycleNext<CR>', desc = 'Next Buffer' },
+  },
   config = function()
     local buff = require 'bufferline'
     buff.setup {
       options = {
-        close_command = 'bdelete! %d', -- Command to close a buffer
-        left_mouse_command = 'buffer %d', -- Left-click to navigate to buffer
+        close_command = 'bdelete! %d',
+        left_mouse_command = 'buffer %d',
         indicator = {
-          icon = '▎', -- Customize the indicator icon
+          icon = '▎',
           style = 'icon',
         },
         tab_size = 18,
@@ -17,7 +26,7 @@ return {
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
           local s = ' '
           for e, n in pairs(diagnostics_dict) do
-            local sym = e == 'error' and ' ' or (e == 'warning' and ' ' or ' ')
+            local sym = e == 'error' and ' ' or (e == 'warning' and ' ' or ' ')
             s = s .. n .. sym
           end
           return s
@@ -34,6 +43,4 @@ return {
       },
     }
   end,
-  vim.keymap.set('n', '<leader>n', ':BufferLineCycleNext<CR>', { desc = '[N]ext Tab' }),
-  vim.keymap.set('n', '<leader>p', ':BufferLineCyclePrev<CR>', { desc = '[P]rev Tab' }),
 }
