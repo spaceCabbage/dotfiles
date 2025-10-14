@@ -1,17 +1,15 @@
 #!/bin/bash
 
-# Source global definitions
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-# source aliases
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 export COMPOSE_BAKE=true
 export _ZO_DOCTOR=0
@@ -43,18 +41,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export CAPACITOR_ANDROID_STUDIO_PATH=/usr/bin/android-studio
 
 export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
-export ANDROID_HOME=/opt/android-sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export ANDROID_HOME=~/Android/Sdk
 export ANDROID_SDK_ROOT=~/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 
 eval "$(starship init bash)"
 eval "$(tailscale completion bash)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash --cmd cd)"
-
-
-echo date

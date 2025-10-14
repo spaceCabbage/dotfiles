@@ -140,15 +140,33 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        pyright = {},
-        -- rust_analyzer = {},
-        typescript_language_server = {},
+        gopls = {
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = true,
+              },
+              staticcheck = true,
+              gofumpt = true,
+            },
+          },
+        },
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'workspace',
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
+        ts_ls = {},
+        volar = {
+          filetypes = { 'vue', 'typescript', 'javascript' },
+        },
         lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
           settings = {
             Lua = {
               completion = {
@@ -157,12 +175,46 @@ return {
             },
           },
         },
+        html = {},
+        cssls = {},
+        jsonls = {},
+        tailwindcss = {},
+        -- Config files
+        dockerls = {},      -- Docker
+        docker_compose_language_service = {},  -- Docker Compose
+        bashls = {},        -- Bash
+        taplo = {},         -- TOML
+        yamlls = {},        -- YAML
+        marksman = {},      -- Markdown
       }
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-      })
+      -- Mason package names (different from lspconfig names)
+      local ensure_installed = {
+        -- LSP Servers
+        'gopls',                            -- Go
+        'pyright',                          -- Python
+        'typescript-language-server',       -- JS/TS (ts_ls in lspconfig)
+        'vue-language-server',              -- Vue (volar in lspconfig)
+        'lua-language-server',              -- Lua (lua_ls in lspconfig)
+        'html-lsp',                         -- HTML
+        'css-lsp',                          -- CSS (cssls in lspconfig)
+        'json-lsp',                         -- JSON (jsonls in lspconfig)
+        'tailwindcss-language-server',      -- Tailwind
+        'dockerfile-language-server',       -- Docker (dockerls in lspconfig)
+        'docker-compose-language-service',  -- Docker Compose
+        'bash-language-server',             -- Bash (bashls in lspconfig)
+        'taplo',                            -- TOML
+        'yaml-language-server',             -- YAML (yamlls in lspconfig)
+        'marksman',                         -- Markdown
+        -- Formatters & Linters
+        'stylua',                           -- Lua formatter
+        'gofumpt',                          -- Go formatter
+        'goimports',                        -- Go imports organizer
+        'black',                            -- Python formatter
+        'isort',                            -- Python import sorter
+        'prettier',                         -- JS/TS/Vue/HTML/CSS formatter
+        'eslint_d',                         -- JS/TS linter
+      }
       require('mason-tool-installer').setup {
         ensure_installed = ensure_installed,
       }
@@ -184,7 +236,23 @@ return {
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc',
+        'go', 'gomod', 'gosum', 'gowork',   -- Go
+        'python',                           -- Python
+        'javascript', 'typescript', 'tsx',  -- JS/TS
+        'vue',                              -- Vue
+        'css', 'scss', 'json', 'yaml',      -- Web
+        'dockerfile',                       -- Docker
+        'make',                             -- Makefile
+        'toml',                             -- TOML config files
+        'terraform',                        -- Infrastructure as code
+        'graphql',                          -- GraphQL
+        'regex',                            -- Regular expressions
+        'sql',                              -- SQL
+        'proto',                            -- Protobuf
+        'gitignore', 'git_config', 'gitcommit',  -- Git
+      },
       auto_install = true,
       highlight = {
         enable = true,
