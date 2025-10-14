@@ -13,7 +13,7 @@ alias o="ollama"alias dc="cd"
 alias sl="ls"
 alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
 alias ls="eza --icons --no-permissions --no-user --color=always"
-alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
+# alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
 
 # alias cd="z"
 alias bd='cd "$OLDPWD"'
@@ -88,7 +88,7 @@ yayi() {
     --preview 'pacman -Sii {1}'
     --preview-label='alt-p: toggle description, alt-j/k: scroll, tab: multi-select, F11: maximize'
     --preview-label-pos='bottom'
-    --preview-window 'down:65%:wrap'
+    --preview-window 'down:45%:wrap'
     --bind 'alt-p:toggle-preview'
     --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
     --bind 'alt-k:preview-up,alt-j:preview-down'
@@ -100,6 +100,5 @@ yayi() {
   if [[ -n "$pkg_names" ]]; then
     # Convert newline-separated selections to space-separated for pacman
     echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
-    omarchy-show-done
   fi
 }
