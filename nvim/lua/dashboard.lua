@@ -28,6 +28,7 @@ return {
       dashboard.button('e', ' New File', ':ene <BAR> startinsert<CR>'),
       dashboard.button('r', ' Resume Session', ':SessionRestore<CR>'),
       dashboard.button('s', '󰺄 Search Sessions', ':SessionSearch<CR>'),
+      dashboard.button('c', ' Claude Code', '<cmd>ClaudeCode<CR>'),
       dashboard.button('q', '󰈆 Quit', ':qa<CR>'),
     }
 

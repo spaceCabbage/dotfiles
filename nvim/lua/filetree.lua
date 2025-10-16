@@ -74,5 +74,23 @@ return {
         vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', { bg = 'none', fg = 'none' })
       end,
     })
+
+    -- Open file tree on startup with dashboard
+    vim.api.nvim_create_autocmd('VimEnter', {
+      group = vim.api.nvim_create_augroup('neo-tree-auto-open', { clear = true }),
+      callback = function()
+        -- Only open if no file arguments were passed
+        if vim.fn.argc() == 0 then
+          vim.schedule(function()
+            local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+            if git_root and git_root ~= '' then
+              require('neo-tree.command').execute { toggle = true, reveal = true, dir = git_root }
+            else
+              require('neo-tree.command').execute { toggle = true, reveal = true }
+            end
+          end)
+        end
+      end,
+    })
   end,
 }

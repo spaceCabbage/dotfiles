@@ -31,6 +31,23 @@ return {
           end
           return s
         end,
+        custom_filter = function(buf_number, buf_numbers)
+          -- Get the buffer's file type and name
+          local filetype = vim.bo[buf_number].filetype
+          local bufname = vim.api.nvim_buf_get_name(buf_number)
+
+          -- Filter out special buffers
+          if filetype == 'neo-tree' or filetype == 'alpha' then
+            return false
+          end
+
+          -- Filter out Claude Code buffers
+          if bufname:match 'claude%-code' then
+            return false
+          end
+
+          return true
+        end,
         show_buffer_icons = true,
         show_buffer_close_icons = true,
         show_close_icon = true,

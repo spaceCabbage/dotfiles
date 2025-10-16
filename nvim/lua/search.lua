@@ -55,11 +55,23 @@ return {
       require('command-palette').show()
     end, { desc = 'Command Palette' })
 
-    -- Search keymaps under <leader>s (help, keymaps, diagnostics, etc.)
-    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Search Diagnostics' })
+    -- Git keymaps under <leader>sg
+    vim.keymap.set('n', '<leader>sgb', builtin.git_branches, { desc = 'Git Branches' })
+    vim.keymap.set('n', '<leader>sgc', builtin.git_commits, { desc = 'Git Commits' })
+    vim.keymap.set('n', '<leader>sgs', builtin.git_status, { desc = 'Git Status' })
+    vim.keymap.set('n', '<leader>sgt', builtin.git_stash, { desc = 'Git Stash' })
+
+    -- Search keymaps under <leader>sh (help, keymaps, etc.)
+    vim.keymap.set('n', '<leader>shh', builtin.help_tags, { desc = 'Help Tags' })
+    vim.keymap.set('n', '<leader>shk', builtin.keymaps, { desc = 'Keymaps' })
+    vim.keymap.set('n', '<leader>shm', builtin.man_pages, { desc = 'Man Pages' })
+    vim.keymap.set('n', '<leader>shr', builtin.registers, { desc = 'Registers' })
+
+    -- Search other
+    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Diagnostics' })
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Resume Last Search' })
     vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = 'Select Telescope' })
+    vim.keymap.set('n', '<leader>sq', builtin.quickfix, { desc = 'Quickfix' })
+    vim.keymap.set('n', '<leader>sl', builtin.loclist, { desc = 'Location List' })
   end,
 }

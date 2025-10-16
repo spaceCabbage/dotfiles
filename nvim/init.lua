@@ -116,6 +116,17 @@ vim.keymap.set({ 'n', 'v' }, '<leader>D', '"_d', { desc = ' Delete Without Yank'
 vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Join lines (keep cursor)' })
 vim.keymap.set('v', 'Q', ':norm @q<CR>', { desc = 'Replay macro on selection' })
 
+-- Config reload
+vim.keymap.set('n', '<leader>r', function()
+  for name, _ in pairs(package.loaded) do
+    if name:match '^user' or name:match '^config' then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.fn.stdpath 'config' .. '/init.lua')
+  vim.notify('Config reloaded!', vim.log.levels.INFO)
+end, { desc = 'Reload config' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -158,6 +169,9 @@ require('lazy').setup {
   require 'indents',
   require 'tabs',
   require 'wakatime',
-  require 'claude-code',
+  require 'ai-claude',
+  require 'trouble',
+  require 'flash',
+  require 'bqf',
   -- require 'hints',
 }
