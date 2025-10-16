@@ -47,8 +47,11 @@ return {
       })
     end, { desc = 'Find in Buffer' })
 
-    -- Command Palette (better layout and formatting)
-    vim.keymap.set('n', '<leader><leader>', function()
+    -- Quick find files with <leader><leader>
+    vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find Files' })
+
+    -- Command Palette with <leader>p (fixed to show only 2 columns)
+    vim.keymap.set('n', '<leader>p', function()
       builtin.commands {
         layout_strategy = 'vertical',
         layout_config = {
@@ -56,6 +59,13 @@ return {
           height = 0.9,
           preview_height = 0.4,
         },
+        entry_maker = function(entry)
+          return {
+            value = entry,
+            display = entry.name,
+            ordinal = entry.name,
+          }
+        end,
       }
     end, { desc = 'Command Palette' })
 
