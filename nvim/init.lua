@@ -58,7 +58,7 @@ vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' 
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 
 -- Better paste (don't replace clipboard)
-vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste without yanking' })
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = ' Paste without yanking' })
 
 -- Quick save
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save file' })
@@ -81,8 +81,8 @@ vim.keymap.set('n', '[q', '<cmd>cprev<CR>', { desc = 'Previous Quickfix' })
 vim.keymap.set('n', ']q', '<cmd>cnext<CR>', { desc = 'Next Quickfix' })
 vim.keymap.set('n', '<leader>qo', '<cmd>copen<CR>', { desc = 'Open Quickfix' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = 'Close Quickfix' })
-vim.keymap.set('n', '<leader>lo', '<cmd>lopen<CR>', { desc = 'Open Location List' })
-vim.keymap.set('n', '<leader>lc', '<cmd>lclose<CR>', { desc = 'Close Location List' })
+vim.keymap.set('n', '<leader>lo', '<cmd>lopen<CR>', { desc = ' Open Location List' })
+vim.keymap.set('n', '<leader>lc', '<cmd>lclose<CR>', { desc = ' Close Location List' })
 
 -- Buffer management
 vim.keymap.set('n', '<leader>ba', '<cmd>%bd|e#<CR>', { desc = 'Close All Buffers' })
@@ -109,10 +109,10 @@ vim.keymap.set('n', '<leader>tv', '<cmd>vsplit | terminal<CR>i', { desc = 'Toggl
 vim.keymap.set('n', '<leader>tf', '<cmd>terminal<CR>i', { desc = 'Toggle Floating Terminal' })
 
 -- Misc useful keymaps
-vim.keymap.set('n', '<leader>x', '<cmd>bd<CR><cmd>close<CR>', { desc = 'Close Buffer & Window' })
-vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to Clipboard' })
-vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank Line to Clipboard' })
-vim.keymap.set({ 'n', 'v' }, '<leader>D', '"_d', { desc = 'Delete Without Yank' })
+vim.keymap.set('n', '<leader>x', '<cmd>bd<CR><cmd>close<CR>', { desc = ' Close Buffer & Window' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = ' Yank to Clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = ' Yank Line to Clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>D', '"_d', { desc = ' Delete Without Yank' })
 vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Join lines (keep cursor)' })
 vim.keymap.set('v', 'Q', ':norm @q<CR>', { desc = 'Replay macro on selection' })
 
@@ -146,7 +146,6 @@ require('lazy').setup {
   require 'theme',
   require 'statusline',
   require 'whichkey',
-  require 'legendary',
   require 'minis',
   require 'formatting',
   require 'search',
@@ -158,5 +157,7 @@ require('lazy').setup {
   require 'markdown',
   require 'indents',
   require 'tabs',
+  require 'wakatime',
+  require 'claude-code',
   -- require 'hints',
 }

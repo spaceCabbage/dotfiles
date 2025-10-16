@@ -50,6 +50,11 @@ return {
     -- Quick find files with <leader><leader>
     vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find Files' })
 
+    -- Command Palette with <leader>p
+    vim.keymap.set('n', '<leader>p', function()
+      require('command-palette').show()
+    end, { desc = 'Command Palette' })
+
     -- Search keymaps under <leader>s (help, keymaps, diagnostics, etc.)
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search Help' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Search Keymaps' })

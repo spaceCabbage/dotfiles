@@ -12,27 +12,22 @@ return {
       },
     }
 
-    -- Register group names for leader key
-    wk.register({
-      b = { name = ' Buffers' },
-      c = { name = ' Code/LSP' },
-      e = { name = ' Explorer' },
-      f = { name = ' Find/Files' },
-      g = { name = ' Git' },
-      q = { name = ' Quickfix' },
-      l = { name = ' Location List' },
-      s = { name = ' Search/Session' },
-      t = { name = ' Toggle/Terminal' },
-      w = { name = ' Window' },
-    }, { prefix = '<leader>' })
-
-    -- Register other group prefixes
-    wk.register({
-      g = { name = 'Go to' },
-    }, { mode = 'n' })
-
-    wk.register({
-      gc = { name = '󰆉 Comment' },
-    }, { mode = { 'n', 'v' } })
+    -- Register group names for leader key using new API
+    wk.add {
+      { '<leader>a', group = ' AI Assistant' },
+      { '<leader>b', group = ' Buffers' },
+      { '<leader>c', group = ' Code/LSP' },
+      { '<leader>e', group = ' Explorer' },
+      { '<leader>f', group = ' Find/Files' },
+      { '<leader>g', group = ' Git' },
+      { '<leader>p', group = ' Command Palette' },
+      { '<leader>q', group = ' Quickfix' },
+      { '<leader>l', group = ' Location List' },
+      { '<leader>s', group = ' Search/Session' },
+      { '<leader>t', group = ' Toggle/Terminal' },
+      { '<leader>w', group = ' Window' },
+      { 'g', group = 'Go to', mode = 'n' },
+      { 'gc', group = '󰆉 Comment', mode = { 'n', 'v' } },
+    }
   end,
 }

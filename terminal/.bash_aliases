@@ -102,4 +102,7 @@ yayi() {
     # Convert newline-separated selections to space-separated for pacman
     echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
   fi
+
 }
+
+alias claude="~/.claude/local/claude"
