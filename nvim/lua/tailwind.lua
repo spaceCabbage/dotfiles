@@ -7,5 +7,10 @@ return {
     'nvim-telescope/telescope.nvim', -- optional
     'neovim/nvim-lspconfig', -- optional
   },
-  opts = {}, -- your configuration
+  opts = {
+    server = {
+      -- Disable automatic LSP setup to avoid deprecation warning
+      override = false,
+    },
+  },
 }

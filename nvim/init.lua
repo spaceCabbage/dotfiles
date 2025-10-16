@@ -146,6 +146,7 @@ require('lazy').setup {
   require 'theme',
   require 'statusline',
   require 'whichkey',
+  require 'legendary',
   require 'minis',
   require 'formatting',
   require 'search',

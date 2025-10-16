@@ -28,7 +28,7 @@ return {
 
     -- Register other group prefixes
     wk.register({
-      g = { name = 'Go to / Git' },
+      g = { name = 'Go to' },
     }, { mode = 'n' })
 
     wk.register({
