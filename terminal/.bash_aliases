@@ -15,12 +15,11 @@ alias sl="ls"
 alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
 alias ls="eza --icons --no-permissions --no-user --color=always"
 # alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
-
 # alias cd="z"
 alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose'
 alias yy="yazi"
-
+alias ox="oxker"
 alias rg="rg --color=always --smart-case"
 alias cat="bat -P"
 alias nv='nvim .'
@@ -37,6 +36,8 @@ alias club="ssh cork@club.corkandcellar.net -p 2222"
 alias kepler="ssh -p 2222 yehuda@kepler"
 alias apollo="ssh yehuda@10.0.0.39"
 alias ray="ssh ray@api.rayati.date -p 2222" 
+alias hubble="ssh yehuda@159.203.91.217"
+
 # Syncing
 alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
 alias pn='cd ~/Documents/notes && git pull && bd'
