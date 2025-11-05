@@ -24,7 +24,7 @@ alias rg="rg --color=always --smart-case"
 alias cat="bat -P"
 alias nv='nvim .'
 alias hh=hstr
-
+alias m="make"
 # DNF
 alias update='sudo dnf update -y --refresh'
 alias install='sudo dnf install'
