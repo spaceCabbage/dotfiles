@@ -46,7 +46,7 @@ export ANDROID_SDK_ROOT=~/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 
 eval "$(starship init bash)"
-eval "$(tailscale completionsbash)"
+eval "$(tailscale completions bash)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash --cmd cd)"
 eval "$(just --completions bash)"
