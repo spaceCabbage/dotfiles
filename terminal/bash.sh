@@ -35,44 +35,45 @@ alias ribis="ssh -p 2222 ribis@145.223.116.211"
 alias club="ssh cork@club.corkandcellar.net -p 2222"
 alias kepler="ssh -p 2222 yehuda@kepler"
 alias apollo="ssh yehuda@10.0.0.39"
-alias ray="ssh ray@api.rayati.date -p 2222" 
+alias ray="ssh ray@api.rayati.date -p 2222"
 alias hubble="ssh yehuda@159.203.91.217"
 
 # Syncing
-sync_repo() {
+sync_repo()
+{
     local repo_dir="${1:-.}"
     local commit_msg="${2:-Update $(basename "$repo_dir") - $(date +%Y-%m-%d\ %H:%M:%S)}"
     local original_dir=$(pwd)
-
+    
     cd "$repo_dir" || { echo "Directory not found: $repo_dir"; return 1; }
-
+    
     echo "Syncing $(basename "$repo_dir")..."
-
+    
     git fetch origin 2>/dev/null
-
+    
     local remote_changes=$(git rev-list HEAD..@{u} --count 2>/dev/null || echo "0")
     local has_local_changes="false"
     [[ -n $(git status -s) ]] && has_local_changes="true"
-
+    
     local stashed="false"
     if [[ "$has_local_changes" == "true" && "$remote_changes" -gt 0 ]]; then
         echo "Stashing local changes..."
         git stash push -m "Auto-stash before sync $(date +%Y-%m-%d\ %H:%M:%S)" >/dev/null 2>&1
         stashed="true"
     fi
-
+    
     if [[ "$remote_changes" -gt 0 ]]; then
         echo "Pulling $remote_changes remote change(s)..."
         git pull --rebase --autostash 2>/dev/null || git pull 2>/dev/null
     else
         echo "No remote changes"
     fi
-
+    
     if [[ "$stashed" == "true" ]]; then
         echo "Reapplying local changes..."
         git stash pop >/dev/null 2>&1
     fi
-
+    
     if [[ -n $(git status -s) ]]; then
         echo "Committing local changes..."
         git add -A
@@ -80,7 +81,7 @@ sync_repo() {
     else
         echo "No local changes to commit"
     fi
-
+    
     local commits_to_push=$(git rev-list @{u}..HEAD --count 2>/dev/null || echo "0")
     if [[ "$commits_to_push" -gt 0 ]]; then
         echo "Pushing $commits_to_push commit(s)..."
@@ -88,12 +89,13 @@ sync_repo() {
     else
         echo "Nothing to push"
     fi
-
+    
     echo "Sync complete!"
     cd "$original_dir"
 }
 
-syncdot() {
+syncdot()
+{
     sync_repo "$HOME/dotfiles" "Update dotfiles"
 }
 
@@ -103,23 +105,25 @@ alias sd="syncdot"
 # Notes management
 NOTES_DIR="$HOME/Documents/notes"
 
-syncnotes() {
+syncnotes()
+{
     sync_repo "$NOTES_DIR" "Notes update"
 }
 
-notes() {
+notes()
+{
     if [[ -n "$1" ]]; then
         # Create/edit note
         local note_name="$1"
         local note_path
-
+        
         # Add .md extension if not present
         [[ "$note_name" != *.md ]] && note_name="${note_name}.md"
         note_path="$NOTES_DIR/$note_name"
-
+        
         # Create parent directories if needed
         mkdir -p "$(dirname "$note_path")"
-
+        
         # Create note with template if it doesn't exist
         if [[ ! -f "$note_path" ]]; then
             cat > "$note_path" << EOF
@@ -131,7 +135,7 @@ Created: $(date '+%Y-%m-%d %H:%M')
 
 EOF
         fi
-
+        
         ${EDITOR:-nvim} "$note_path"
     else
         # Browse all notes
@@ -139,18 +143,19 @@ EOF
     fi
 }
 
-fn() {
+fn()
+{
     local selected
     selected=$(find "$NOTES_DIR" -type f \( -name "*.md" -o -name "*.txt" \) 2>/dev/null |
         sed "s|$NOTES_DIR/||" |
         fzf --preview "glow -s dark $NOTES_DIR/{}" \
-            --preview-window="right:70%:wrap" \
-            --bind 'alt-p:toggle-preview' \
-            --bind 'alt-j:preview-down,alt-k:preview-up' \
-            --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up' \
-            --header 'alt-p: toggle preview | alt-j/k: scroll | enter: open' \
-            --color 'pointer:green,marker:green')
-
+        --preview-window="right:70%:wrap" \
+        --bind 'alt-p:toggle-preview' \
+        --bind 'alt-j:preview-down,alt-k:preview-up' \
+        --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up' \
+        --header 'alt-p: toggle preview | alt-j/k: scroll | enter: open' \
+    --color 'pointer:green,marker:green')
+    
     [[ -n "$selected" ]] && glow -p "$NOTES_DIR/$selected"
 }
 
@@ -196,25 +201,25 @@ alias kill="tmux kill-session"
 
 # pacman package installer with fzf
 yayi() {
-  fzf_args=(
-    --multi
-    --preview 'pacman -Sii {1}'
-    --preview-label='alt-p: toggle description, alt-j/k: scroll, tab: multi-select, F11: maximize'
-    --preview-label-pos='bottom'
-    --preview-window 'down:45%:wrap'
-    --bind 'alt-p:toggle-preview'
-    --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
-    --bind 'alt-k:preview-up,alt-j:preview-down'
-    --color 'pointer:green,marker:green'
-  )
-
-  pkg_names=$(pacman -Slq | fzf "${fzf_args[@]}")
-
-  if [[ -n "$pkg_names" ]]; then
-    # Convert newline-separated selections to space-separated for pacman
-    echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
-  fi
-
+    fzf_args=(
+        --multi
+        --preview 'pacman -Sii {1}'
+        --preview-label='alt-p: toggle description, alt-j/k: scroll, tab: multi-select, F11: maximize'
+        --preview-label-pos='bottom'
+        --preview-window 'down:45%:wrap'
+        --bind 'alt-p:toggle-preview'
+        --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
+        --bind 'alt-k:preview-up,alt-j:preview-down'
+        --color 'pointer:green,marker:green'
+    )
+    
+    pkg_names=$(pacman -Slq | fzf "${fzf_args[@]}")
+    
+    if [[ -n "$pkg_names" ]]; then
+        # Convert newline-separated selections to space-separated for pacman
+        echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
+    fi
+    
 }
 
 alias claude="~/.claude/local/claude"
