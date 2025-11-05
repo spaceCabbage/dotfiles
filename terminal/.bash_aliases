@@ -38,45 +38,36 @@ alias apollo="ssh yehuda@10.0.0.39"
 alias ray="ssh ray@api.rayati.date -p 2222" 
 alias hubble="ssh yehuda@159.203.91.217"
 
-# Syncing
-alias syncdot='cd ~/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
-alias pd='cd ~/dotfiles/ && git pull && bd'
-alias sd="syncdot"
-
-# Notes management
-syncnotes() {
-    local notes_dir="${1:-$HOME/Documents/notes}"
+# Syncing - Git sync helper function
+_sync_git_repo() {
+    local repo_dir="${1:-.}"
+    local commit_msg="${2:-Update $(basename "$repo_dir") - $(date +%Y-%m-%d\ %H:%M:%S)}"
     local original_dir=$(pwd)
 
-    cd "$notes_dir" || { echo "❌ Notes directory not found"; return 1; }
+    cd "$repo_dir" || { echo "❌ Directory not found: $repo_dir"; return 1; }
 
-    echo "🔄 Syncing notes..."
+    echo "🔄 Syncing $(basename "$repo_dir")..."
 
     # Fetch remote changes
     git fetch origin 2>/dev/null
 
-    # Check if there are remote changes
+    # Check remote and local changes
     local remote_changes=$(git rev-list HEAD..@{u} --count 2>/dev/null || echo "0")
+    local has_local_changes="false"
+    [[ -n $(git status -s) ]] && has_local_changes="true"
 
-    # Check if there are local changes
-    if [[ -n $(git status -s) ]]; then
-        local has_local_changes="true"
-    else
-        local has_local_changes="false"
-    fi
-
-    # Stash local changes if needed (only if pulling remote changes)
+    # Stash if we have both local and remote changes
     local stashed="false"
     if [[ "$has_local_changes" == "true" && "$remote_changes" -gt 0 ]]; then
         echo "📦 Stashing local changes..."
-        git stash push -m "Auto-stash before sync $(date +%Y-%m-%d\ %H:%M:%S)" >/dev/null
+        git stash push -m "Auto-stash before sync $(date +%Y-%m-%d\ %H:%M:%S)" >/dev/null 2>&1
         stashed="true"
     fi
 
     # Pull remote changes if any
     if [[ "$remote_changes" -gt 0 ]]; then
         echo "⬇️  Pulling $remote_changes remote change(s)..."
-        git pull --rebase --autostash
+        git pull --rebase --autostash 2>/dev/null || git pull 2>/dev/null
     else
         echo "✓ No remote changes"
     fi
@@ -84,14 +75,14 @@ syncnotes() {
     # Reapply stashed changes
     if [[ "$stashed" == "true" ]]; then
         echo "📂 Reapplying local changes..."
-        git stash pop >/dev/null
+        git stash pop >/dev/null 2>&1
     fi
 
-    # Commit any local changes (including those from stash)
+    # Commit any local changes
     if [[ -n $(git status -s) ]]; then
         echo "💾 Committing local changes..."
         git add -A
-        git commit -m "Notes update $(date +%Y-%m-%d\ %H:%M:%S)" >/dev/null
+        git commit -m "$commit_msg" >/dev/null 2>&1
     else
         echo "✓ No local changes to commit"
     fi
@@ -100,7 +91,7 @@ syncnotes() {
     local commits_to_push=$(git rev-list @{u}..HEAD --count 2>/dev/null || echo "0")
     if [[ "$commits_to_push" -gt 0 ]]; then
         echo "⬆️  Pushing $commits_to_push commit(s)..."
-        git push
+        git push 2>/dev/null
     else
         echo "✓ Nothing to push"
     fi
@@ -109,8 +100,71 @@ syncnotes() {
     cd "$original_dir"
 }
 
+syncdot() {
+    _sync_git_repo "$HOME/dotfiles" "Update dotfiles"
+}
+
+alias pd='cd ~/dotfiles/ && git pull && bd'
+alias sd="syncdot"
+
+# Notes management
+NOTES_DIR="$HOME/Documents/notes"
+
+# Sync notes using shared git sync function
+syncnotes() {
+    _sync_git_repo "$NOTES_DIR" "Notes update"
+}
+
+# Browse all notes, or create/edit if name provided
+notes() {
+    if [[ -n "$1" ]]; then
+        # Create/edit note
+        local note_name="$1"
+        local note_path
+
+        # Add .md extension if not present
+        [[ "$note_name" != *.md ]] && note_name="${note_name}.md"
+        note_path="$NOTES_DIR/$note_name"
+
+        # Create parent directories if needed
+        mkdir -p "$(dirname "$note_path")"
+
+        # Create note with template if it doesn't exist
+        if [[ ! -f "$note_path" ]]; then
+            cat > "$note_path" << EOF
+# ${note_name%.md}
+
+Created: $(date '+%Y-%m-%d %H:%M')
+
+---
+
+EOF
+        fi
+
+        ${EDITOR:-nvim} "$note_path"
+    else
+        # Browse all notes
+        glow -p -w 120 "$NOTES_DIR"
+    fi
+}
+
+# Find and open note with fzf
+fn() {
+    local selected
+    selected=$(find "$NOTES_DIR" -type f \( -name "*.md" -o -name "*.txt" \) 2>/dev/null |
+        sed "s|$NOTES_DIR/||" |
+        fzf --preview "glow -s dark $NOTES_DIR/{}" \
+            --preview-window="right:70%:wrap" \
+            --bind 'alt-p:toggle-preview' \
+            --bind 'alt-j:preview-down,alt-k:preview-up' \
+            --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up' \
+            --header 'alt-p: toggle preview | alt-j/k: scroll | enter: open' \
+            --color 'pointer:green,marker:green')
+
+    [[ -n "$selected" ]] && glow -p "$NOTES_DIR/$selected"
+}
+
 alias sn="syncnotes"
-alias notes='glow ~/Documents/notes'
 alias n="notes"
 
 # git
