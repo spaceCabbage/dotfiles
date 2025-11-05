@@ -39,12 +39,79 @@ alias ray="ssh ray@api.rayati.date -p 2222"
 alias hubble="ssh yehuda@159.203.91.217"
 
 # Syncing
-alias syncnote='cd ~/Documents/notes && git add . && git commit -m "Update notes" && git push && bd'
-alias pn='cd ~/Documents/notes && git pull && bd'
-alias sn="syncnote"
 alias syncdot='cd ~/dotfiles/ && git add . && git commit -m "Update dotfiles" && git push && bd'
 alias pd='cd ~/dotfiles/ && git pull && bd'
 alias sd="syncdot"
+
+# Notes management
+syncnotes() {
+    local notes_dir="${1:-$HOME/Documents/notes}"
+    local original_dir=$(pwd)
+
+    cd "$notes_dir" || { echo "❌ Notes directory not found"; return 1; }
+
+    echo "🔄 Syncing notes..."
+
+    # Fetch remote changes
+    git fetch origin 2>/dev/null
+
+    # Check if there are remote changes
+    local remote_changes=$(git rev-list HEAD..@{u} --count 2>/dev/null || echo "0")
+
+    # Check if there are local changes
+    if [[ -n $(git status -s) ]]; then
+        local has_local_changes="true"
+    else
+        local has_local_changes="false"
+    fi
+
+    # Stash local changes if needed (only if pulling remote changes)
+    local stashed="false"
+    if [[ "$has_local_changes" == "true" && "$remote_changes" -gt 0 ]]; then
+        echo "📦 Stashing local changes..."
+        git stash push -m "Auto-stash before sync $(date +%Y-%m-%d\ %H:%M:%S)" >/dev/null
+        stashed="true"
+    fi
+
+    # Pull remote changes if any
+    if [[ "$remote_changes" -gt 0 ]]; then
+        echo "⬇️  Pulling $remote_changes remote change(s)..."
+        git pull --rebase --autostash
+    else
+        echo "✓ No remote changes"
+    fi
+
+    # Reapply stashed changes
+    if [[ "$stashed" == "true" ]]; then
+        echo "📂 Reapplying local changes..."
+        git stash pop >/dev/null
+    fi
+
+    # Commit any local changes (including those from stash)
+    if [[ -n $(git status -s) ]]; then
+        echo "💾 Committing local changes..."
+        git add -A
+        git commit -m "Notes update $(date +%Y-%m-%d\ %H:%M:%S)" >/dev/null
+    else
+        echo "✓ No local changes to commit"
+    fi
+
+    # Push everything
+    local commits_to_push=$(git rev-list @{u}..HEAD --count 2>/dev/null || echo "0")
+    if [[ "$commits_to_push" -gt 0 ]]; then
+        echo "⬆️  Pushing $commits_to_push commit(s)..."
+        git push
+    else
+        echo "✓ Nothing to push"
+    fi
+
+    echo "✅ Sync complete!"
+    cd "$original_dir"
+}
+
+alias sn="syncnotes"
+alias notes='glow ~/Documents/notes'
+alias n="notes"
 
 # git
 alias gc="git clone"
