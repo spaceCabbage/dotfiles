@@ -1,0 +1,22 @@
+[Desktop Entry]
+DefaultProfile=Default.profile
+
+[General]
+ConfigVersion=1
+
+[KonsoleWindow]
+FocusFollowsMouse=true
+RememberWindowSize=false
+RemoveWindowTitleBarAndFrame=true
+
+[MainWindow]
+MenuBar=Enabled
+
+[Notification Messages]
+CloseAllEmptyTabs=false
+CloseAllTabs=false
+CloseSingleTab=true
+ShowPasteHugeTextWarning=false
+
+[UiSettings]
+ColorScheme=
