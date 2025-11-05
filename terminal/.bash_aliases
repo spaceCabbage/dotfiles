@@ -143,13 +143,13 @@ fn() {
     local selected
     selected=$(find "$NOTES_DIR" -type f \( -name "*.md" -o -name "*.txt" \) 2>/dev/null |
         sed "s|$NOTES_DIR/||" |
-        fzf --preview "glow -s dark $NOTES_DIR/{}" \
+        fzf --preview "glow $NOTES_DIR/{}" \
             --preview-window="right:70%:wrap" \
             --bind 'alt-p:toggle-preview' \
             --bind 'alt-j:preview-down,alt-k:preview-up' \
             --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up' \
             --header 'alt-p: toggle preview | alt-j/k: scroll | enter: open' \
-            --color 'pointer:green,marker:green')
+            --color 'fg:#ebdbb2,bg:#282828,hl:#fe8019,fg+:#fbf1c7,bg+:#3c3836,hl+:#fabd2f,info:#83a598,prompt:#b8bb26,pointer:#8ec07c,marker:#8ec07c,spinner:#d3869b,header:#928374')
 
     [[ -n "$selected" ]] && glow -p "$NOTES_DIR/$selected"
 }
