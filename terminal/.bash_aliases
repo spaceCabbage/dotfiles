@@ -2,7 +2,6 @@
 
 # general
 alias ebrc='nvim ~/.bashrc'
-
 alias eba='nvim ~/.bash_aliases'
 alias sbrc='source ~/.bashrc'
 alias stx="tmux source ~/.tmux.conf"
