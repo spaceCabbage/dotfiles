@@ -36,7 +36,7 @@ alias kepler="ssh -p 2222 yehuda@kepler"
 alias apollo="ssh yehuda@10.0.0.39"
 alias ray="ssh ray@api.rayati.date -p 2222" 
 alias hubble="ssh yehuda@159.203.91.217"
-
+alias symp="ssh -p 2222 user@138.197.117.252"
 # Syncing
 sync_repo() {
     local repo_dir="${1:-.}"
