@@ -13,6 +13,7 @@ alias dc="cd"
 alias sl="ls"
 alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
 alias ls="eza --icons --no-permissions --no-user --color=always"
+alias cdr='cd "$(git rev-parse --show-toplevel)"'
 # alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
 # alias cd="z"
 alias bd='cd "$OLDPWD"'
@@ -36,7 +37,9 @@ alias kepler="ssh -p 2222 yehuda@kepler"
 alias apollo="ssh yehuda@10.0.0.39"
 alias ray="ssh ray@api.rayati.date -p 2222" 
 alias hubble="ssh yehuda@159.203.91.217"
-alias symp="ssh -p 2222 deploy@138.197.117.252"
+alias symp="ssh -p 2222 deploy@symphony.amberlogic.com"
+alias football="ssh yehuda@football.local"
+alias ime="ssh -p 2222 deploy@ime.amberlogic.com"
 
 # Syncing
 sync_repo() {

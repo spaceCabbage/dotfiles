@@ -8,6 +8,7 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 
@@ -16,8 +17,9 @@ export _ZO_DOCTOR=0
 
 if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
 
-export HISTCONTROL=ignoredups
 PROMPT_COMMAND='history -a'
+
+export HISTCONTROL=ignoredups
 shopt -s checkwinsize
 bind 'set completion-ignore-case on'
 if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
