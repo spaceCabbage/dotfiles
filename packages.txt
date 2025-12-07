@@ -1,0 +1,32 @@
+# Core
+git
+curl
+wget
+
+# Shell & Terminal
+tmux
+zoxide
+fzf
+
+# Editor
+neovim
+
+# CLI tools
+eza
+ripgrep
+bat
+yazi
+jq
+btop
+duf
+tldr
+
+# Containers
+docker
+docker-compose
+
+# Python
+python
+
+# Go (Arch package manager, Debian uses golang)
+go
