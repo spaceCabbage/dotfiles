@@ -20,7 +20,7 @@ SemanticInputClick=true
 TerminalCenter=false
 TerminalColumns=175
 TerminalMargin=5
-TerminalRows=35
+TerminalRows=40
 
 [Interaction Options]
 CopyTextAsHTML=false
