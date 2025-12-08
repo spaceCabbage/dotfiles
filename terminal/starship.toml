@@ -6,7 +6,7 @@ style_root = "fg:#fb4934 bold"
 
 [hostname]
 ssh_only = false
-format = "[@](fg:#688080)[${hostname}](fg:#688080) "
+format = "[@](fg:#688080)[${hostname}](fg:#d3869b) "
 ssh_symbol = "🌐 "
 style = "fg:#688080"
 
