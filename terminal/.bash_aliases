@@ -25,6 +25,8 @@ alias cat="bat -P"
 alias nv='nvim .'
 alias hh=hstr
 alias m="make"
+alias zed='zeditor'
+
 # DNF
 alias update='sudo dnf update -y --refresh'
 alias install='sudo dnf install'
