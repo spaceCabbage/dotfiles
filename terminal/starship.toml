@@ -11,7 +11,7 @@ ssh_symbol = "🌐 "
 style = "fg:#688080"
 
 [env_var.SSH_CONNECTION]
-format = "[via SSH](fg:#fabd2f bold) "
+format = "[SSH](fg:#fabd2f bold) "
 disabled = false
 
 [line_break]
