@@ -1,10 +1,18 @@
 [username]
 show_always = true
 format = "[${user}](fg:#83a598)"
+style_user = "fg:#83a598"
+style_root = "fg:#fb4934 bold"
 
 [hostname]
 ssh_only = false
 format = "[@](fg:#688080)[${hostname}](fg:#688080) "
+ssh_symbol = "🌐 "
+style = "fg:#688080"
+
+[env_var.SSH_CONNECTION]
+format = "[via SSH](fg:#fabd2f bold) "
+disabled = false
 
 [line_break]
 disabled = true
