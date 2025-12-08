@@ -5,10 +5,10 @@ style_user = "fg:#83a598"
 style_root = "fg:#fb4934 bold"
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = "[@](fg:#688080)[${hostname}](fg:#d3869b) "
 ssh_symbol = "🌐 "
-style = "fg:#688080"
+style = "fg:#d3869b"
 
 [env_var.SSH_CONNECTION]
 format = "[SSH](fg:#fabd2f bold) "
