@@ -223,3 +223,10 @@ yayi() {
 }
 
 alias claude="~/.claude/local/claude"
+
+cheat() {
+  echo "!!  Last command"
+  echo "!$  Last arg"
+  echo "!^  First arg"
+  echo "!*  All args"
+}
