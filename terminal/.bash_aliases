@@ -42,6 +42,7 @@ alias hubble="ssh yehuda@159.203.91.217"
 alias symp="ssh -p 2222 deploy@symphony.amberlogic.com"
 alias football="ssh yehuda@football.local"
 alias ime="ssh -p 2222 deploy@ime.amberlogic.com"
+alias lucy="ssh -p 2222 lucy@lucyconway.blog"
 
 # Syncing
 sync_repo() {
