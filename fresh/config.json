@@ -1,0 +1,1 @@
+{  "theme": "dark",  "editor": {    "tab_size": 4  },  "lsp": {    "rust": {      "command": "rust-analyzer",      "enabled": true    }  }}
