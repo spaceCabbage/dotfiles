@@ -231,6 +231,41 @@ create_symlink() {
     success "Linked: $dest -> $src"
 }
 
+# Preserve existing bash config before symlinking
+preserve_bash_config() {
+    local preserved=false
+
+    # Check for existing .bashrc (not a symlink to our repo)
+    if [[ -f "$HOME/.bashrc" && ! -L "$HOME/.bashrc" ]]; then
+        info "Preserving existing .bashrc content..."
+        {
+            echo ""
+            echo "# === Preserved from original .bashrc ($(date +%Y-%m-%d)) ==="
+            cat "$HOME/.bashrc"
+            echo "# === End preserved .bashrc ==="
+            echo ""
+        } >> "$HOME/.bashrc_local"
+        preserved=true
+    fi
+
+    # Check for existing .bash_aliases (not a symlink to our repo)
+    if [[ -f "$HOME/.bash_aliases" && ! -L "$HOME/.bash_aliases" ]]; then
+        info "Preserving existing .bash_aliases content..."
+        {
+            echo ""
+            echo "# === Preserved from original .bash_aliases ($(date +%Y-%m-%d)) ==="
+            cat "$HOME/.bash_aliases"
+            echo "# === End preserved .bash_aliases ==="
+            echo ""
+        } >> "$HOME/.bashrc_local"
+        preserved=true
+    fi
+
+    if $preserved; then
+        success "Existing bash config preserved in ~/.bashrc_local"
+    fi
+}
+
 # Setup symlinks
 setup_symlinks() {
     info "Setting up symlinks..."
@@ -271,8 +306,9 @@ EOF
 main() {
     install_packages
     install_curl_tools
-    setup_symlinks
-    create_bashrc_local
+    create_bashrc_local      # Create template first
+    preserve_bash_config     # Append existing config before symlinking
+    setup_symlinks           # Now safe to replace with symlinks
 
     echo ""
     echo -e "${GREEN}========================================${NC}"

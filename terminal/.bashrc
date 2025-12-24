@@ -52,6 +52,9 @@ eval "$(direnv hook bash)"
 eval "$(zoxide init bash --cmd cd)"
 export PATH="$HOME/.claude/local:$PATH"
 
+# Welcome message on login
+[[ -f "$HOME/dotfiles/terminal/welcome.sh" ]] && . "$HOME/dotfiles/terminal/welcome.sh"
+
 # Load device-specific configuration (not synced with git)
 if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
