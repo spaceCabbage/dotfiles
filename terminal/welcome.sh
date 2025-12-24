@@ -9,6 +9,9 @@ CYAN='\033[0;36m'
 GRAY='\033[0;90m'
 NC='\033[0m'
 
+# Helper for box lines (pads to fixed width)
+_box() { printf "${GRAY}│${NC}  %-36s${GRAY}│${NC}\n" "$1"; }
+
 # Gather info (all instant, fail silently)
 _date=$(date "+%a %b %d, %I:%M %p" 2>/dev/null)
 _local_ip=$(hostname -I 2>/dev/null | awk '{print $1}')
@@ -27,12 +30,12 @@ if [[ -n "$SSH_CONNECTION" ]]; then
     fi
 
     echo -e "${GRAY}┌──────────────────────────────────────┐${NC}"
-    echo -e "${GRAY}│${NC}  ${CYAN}${_date}${NC}"
-    echo -e "${GRAY}│${NC}"
-    echo -e "${GRAY}│${NC}  SSH via: ${_conn_type} (${_ssh_from})"
-    [[ -n "$_local_ip" ]] && echo -e "${GRAY}│${NC}  Local IP: ${_local_ip}"
-    [[ -n "$_tailscale_ip" ]] && echo -e "${GRAY}│${NC}  Tailscale IP: ${_tailscale_ip}"
-    [[ -n "$_uptime" ]] && echo -e "${GRAY}│${NC}  Uptime: ${_uptime}"
+    _box "$_date"
+    _box ""
+    _box "SSH via: $_conn_type ($_ssh_from)"
+    [[ -n "$_local_ip" ]] && _box "Local IP: $_local_ip"
+    [[ -n "$_tailscale_ip" ]] && _box "Tailscale IP: $_tailscale_ip"
+    [[ -n "$_uptime" ]] && _box "Uptime: $_uptime"
     echo -e "${GRAY}└──────────────────────────────────────┘${NC}"
 else
     # Local session - simple one-liner
@@ -44,4 +47,4 @@ else
 fi
 
 # Cleanup
-unset _date _local_ip _tailscale_ip _uptime _ssh_from _conn_type _parts
+unset _date _local_ip _tailscale_ip _uptime _ssh_from _conn_type _parts _box
