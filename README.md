@@ -50,9 +50,17 @@ Tools installed via curl (not package manager):
 - **bun** - JavaScript runtime
 - **uv** - Python package manager
 
-## Re-running
+## Updating
 
-Safe to run multiple times:
-- Existing correct symlinks are skipped
-- Existing files are backed up before replacing
-- Already-installed packages are skipped (`--needed`)
+Re-run the install script anytime to pull the latest changes:
+```bash
+cd ~/dotfiles && ./install.sh
+```
+
+This will:
+- Pull the latest dotfiles from GitHub
+- Install any new packages
+- Update symlinks if needed
+- Install new tmux plugins
+
+Safe to run multiple times - existing correct symlinks are skipped, and any conflicting files are backed up to `~/.dotfiles-backup/`.

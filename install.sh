@@ -76,13 +76,15 @@ if [[ $DISTRO == "arch" ]] && ! command -v yay &>/dev/null; then
     success "yay installed"
 fi
 
-# Clone dotfiles if not present
+# Clone dotfiles if not present, or pull latest
 if [[ ! -d "$DOTFILES_DIR" ]]; then
     info "Cloning dotfiles..."
     git clone "https://github.com/$GITHUB_USER/dotfiles.git" "$DOTFILES_DIR"
     success "Dotfiles cloned to $DOTFILES_DIR"
 else
-    info "Dotfiles already present at $DOTFILES_DIR"
+    info "Pulling latest dotfiles..."
+    git -C "$DOTFILES_DIR" pull --ff-only || warn "Could not pull (local changes?)"
+    success "Dotfiles updated"
 fi
 
 cd "$DOTFILES_DIR"
@@ -201,6 +203,24 @@ install_curl_tools() {
     fi
 }
 
+# Install TPM (tmux plugin manager) and plugins
+install_tpm() {
+    if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+        info "Installing tmux plugin manager..."
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        success "TPM installed"
+    else
+        success "TPM already installed"
+    fi
+
+    # Install tmux plugins (requires tmux.conf to be linked first)
+    if [[ -f "$HOME/.tmux.conf" ]] && [[ -x "$HOME/.tmux/plugins/tpm/bin/install_plugins" ]]; then
+        info "Installing tmux plugins..."
+        "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+        success "Tmux plugins installed"
+    fi
+}
+
 # Create symlink with backup
 create_symlink() {
     local src="$1"
@@ -309,6 +329,7 @@ main() {
     create_bashrc_local      # Create template first
     preserve_bash_config     # Append existing config before symlinking
     setup_symlinks           # Now safe to replace with symlinks
+    install_tpm              # Install tmux plugin manager and plugins
 
     echo ""
     echo -e "${GREEN}========================================${NC}"
