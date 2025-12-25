@@ -207,6 +207,7 @@ install_curl_tools() {
 install_tpm() {
     if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
         info "Installing tmux plugin manager..."
+        mkdir -p ~/.tmux/plugins
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
         success "TPM installed"
     else
@@ -216,7 +217,7 @@ install_tpm() {
     # Install tmux plugins (requires tmux.conf to be linked first)
     if [[ -f "$HOME/.tmux.conf" ]] && [[ -x "$HOME/.tmux/plugins/tpm/bin/install_plugins" ]]; then
         info "Installing tmux plugins..."
-        "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+        TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins" "$HOME/.tmux/plugins/tpm/bin/install_plugins"
         success "Tmux plugins installed"
     fi
 }
