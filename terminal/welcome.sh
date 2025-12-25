@@ -4,6 +4,9 @@
 # Only run on login shells
 shopt -q login_shell || return 0
 
+# Skip in automated/non-human terminals (Claude Code, dumb terminals, Emacs)
+[[ -n "$CLAUDE_CODE" || "$TERM" == "dumb" || -n "$INSIDE_EMACS" ]] && return 0
+
 # Colors
 CYAN='\033[0;36m'
 GRAY='\033[0;90m'
