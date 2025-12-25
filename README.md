@@ -6,12 +6,12 @@ Personal dotfiles for Arch Linux and Debian servers.
 
 **Fresh machine (one-liner):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/spaceCabbage/dotfiles/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/spaceCabbage/dotfiles/arch/install.sh | bash
 ```
 
 **With custom GitHub username:**
 ```bash
-GITHUB_USER=someone curl -fsSL https://raw.githubusercontent.com/someone/dotfiles/main/install.sh | bash
+GITHUB_USER=someone curl -fsSL https://raw.githubusercontent.com/someone/dotfiles/arch/install.sh | bash
 ```
 
 **Already cloned:**
