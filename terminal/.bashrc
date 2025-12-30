@@ -21,7 +21,7 @@ PROMPT_COMMAND='history -a'
 
 export HISTCONTROL=ignoredups
 shopt -s checkwinsize
-bind 'set completion-ignore-case on'
+[[ $- == *i* ]] && bind 'set completion-ignore-case on'
 if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 export NVM_DIR="$HOME/.nvm"
