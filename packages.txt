@@ -15,15 +15,11 @@ neovim
 eza
 ripgrep
 bat
-yazi
 jq
 btop
 duf
 tldr
 
-# Containers
-docker
-docker-compose
 
 # Python
 python

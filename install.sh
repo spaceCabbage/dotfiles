@@ -95,11 +95,10 @@ declare -A PKG_MAP=(
     ["python-pip"]="python3-pip"
     ["python-venv"]="python3-venv"
     ["go"]="golang"
-    ["docker-compose"]="docker-compose-plugin"
 )
 
 # Packages to skip on Debian (not in apt or installed via curl)
-SKIP_ON_DEBIAN="eza yazi zoxide duf starship"
+SKIP_ON_DEBIAN="eza zoxide duf starship"
 
 # Install packages from packages.txt
 install_packages() {
@@ -196,10 +195,6 @@ install_curl_tools() {
             warn "duf needs manual install on Debian (see https://github.com/muesli/duf)"
         fi
 
-        if ! command -v yazi &>/dev/null && command -v cargo &>/dev/null; then
-            info "Installing yazi via cargo..."
-            cargo install --locked yazi-fm yazi-cli
-        fi
     fi
 }
 
