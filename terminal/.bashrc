@@ -59,3 +59,4 @@ export PATH="$HOME/.claude/local:$PATH"
 if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
 fi
+
