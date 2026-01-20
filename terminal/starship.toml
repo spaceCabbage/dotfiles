@@ -5,14 +5,13 @@ style_user = "fg:#83a598"
 style_root = "fg:#fb4934 bold"
 
 [hostname]
-ssh_only = false
-format = "[@](fg:#688080)[${hostname}](fg:#688080) "
-ssh_symbol = "🌐 "
-style = "fg:#688080"
+ssh_only = true
+format = "[@](fg:#688080)[${hostname}](fg:#fabd2f) "
 
-[env_var.SSH_CONNECTION]
-format = "[SSH](fg:#fabd2f bold) "
-disabled = false
+[custom.hostname_local]
+command = "hostname"
+when = "[ -z \"$SSH_CONNECTION\" ]"
+format = "[@$output](fg:#688080) "
 
 [line_break]
 disabled = true
