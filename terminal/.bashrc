@@ -8,6 +8,9 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# UTF-8 locale for proper Nerd Font rendering over SSH
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 export EDITOR='nvim'
 export VISUAL='nvim'
