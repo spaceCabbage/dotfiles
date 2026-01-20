@@ -25,3 +25,21 @@ python
 
 # Go (Arch package manager, Debian uses golang)
 go
+
+# Wayland/Niri (Arch only - for Niri compositor)
+# niri                  # Wayland compositor
+# waybar                # Status bar
+# rofi-wayland          # App launcher
+# mako                  # Notifications
+# swaylock-effects      # Lock screen with blur
+# swww                  # Wallpaper daemon
+# wl-clipboard          # Clipboard utilities
+# cliphist              # Clipboard history
+# grim                  # Screenshot tool
+# slurp                 # Region selector
+# hyprpicker            # Color picker
+# brightnessctl         # Brightness control
+# playerctl             # Media player control
+# wlsunset              # Night light
+# xwayland-satellite    # XWayland for Niri (AUR)
+# stasis-git            # Smart idle manager (AUR)

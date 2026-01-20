@@ -10,7 +10,7 @@ RememberWindowSize=false
 RemoveWindowTitleBarAndFrame=true
 
 [MainWindow]
-MenuBar=Enabled
+MenuBar=Disabled
 
 [Notification Messages]
 CloseAllEmptyTabs=false

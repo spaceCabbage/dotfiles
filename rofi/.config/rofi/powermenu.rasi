@@ -1,0 +1,78 @@
+/* Power Menu Theme for Rofi */
+
+* {
+    bg:             #282828;
+    bg-alt:         #3c3836;
+    fg:             #ebdbb2;
+    fg-alt:         #928374;
+    border:         #504945;
+    accent:         #83a598;
+    red:            #fb4934;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    width:            400px;
+    background-color: @bg;
+    border:           2px;
+    border-color:     @border;
+    border-radius:    12px;
+    padding:          24px;
+    location:         center;
+    anchor:           center;
+}
+
+mainbox {
+    children: [ message, listview ];
+    spacing: 20px;
+}
+
+message {
+    background-color: transparent;
+    padding:          0;
+}
+
+textbox {
+    text-color:       @fg;
+    horizontal-align: 0.5;
+    font:             "CaskaydiaCove Nerd Font Bold 16";
+}
+
+listview {
+    lines:            4;
+    columns:          1;
+    fixed-height:     true;
+    scrollbar:        false;
+    spacing:          8px;
+}
+
+element {
+    padding:          16px 20px;
+    border-radius:    8px;
+    orientation:      horizontal;
+}
+
+element normal.normal {
+    background-color: @bg-alt;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color:       @bg;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    font:             "CaskaydiaCove Nerd Font 14";
+}
+
+inputbar,
+prompt,
+entry,
+mode-switcher {
+    enabled: false;
+}

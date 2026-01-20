@@ -1,0 +1,60 @@
+# Swaylock Configuration
+# Gruvbox Dark Theme - Wallpaper Visible with Dimming
+
+color=282828
+font=CaskaydiaCove Nerd Font
+font-size=24
+
+# No blur - wallpaper visible with dim overlay
+effect-scale=1
+effect-vignette=0.3:0.8
+
+# Smooth fade-in transition
+fade-in=0.3
+
+# Clock in center
+clock
+timestr=%H:%M
+datestr=%A, %B %d
+
+# Ring colors - transparent inside
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+
+# Smaller ring (80px radius, 6px thick)
+ring-color=504945
+ring-clear-color=fabd2f
+ring-caps-lock-color=fe8019
+ring-ver-color=83a598
+ring-wrong-color=fb4934
+
+key-hl-color=b8bb26
+bs-hl-color=fb4934
+caps-lock-key-hl-color=fabd2f
+caps-lock-bs-hl-color=fb4934
+
+separator-color=00000000
+
+text-color=ebdbb2
+text-clear-color=fabd2f
+text-caps-lock-color=fe8019
+text-ver-color=83a598
+text-wrong-color=fb4934
+
+indicator
+indicator-radius=50
+indicator-thickness=6
+indicator-caps-lock
+
+ignore-empty-password
+show-failed-attempts
+daemonize

@@ -299,6 +299,26 @@ setup_symlinks() {
     if [[ $DISTRO == "arch" ]]; then
         create_symlink "$DOTFILES_DIR/konsole/.config/konsolerc" "$HOME/.config/konsolerc"
         create_symlink "$DOTFILES_DIR/konsole/.local/share/konsole" "$HOME/.local/share/konsole"
+
+        # Niri Wayland compositor
+        create_symlink "$DOTFILES_DIR/niri/.config/niri" "$HOME/.config/niri"
+
+        # Waybar status bar
+        create_symlink "$DOTFILES_DIR/waybar/.config/waybar" "$HOME/.config/waybar"
+
+        # Rofi launcher
+        create_symlink "$DOTFILES_DIR/rofi/.config/rofi" "$HOME/.config/rofi"
+
+        # Mako notifications
+        create_symlink "$DOTFILES_DIR/mako/.config/mako" "$HOME/.config/mako"
+
+        # Swaylock
+        create_symlink "$DOTFILES_DIR/swaylock/.config/swaylock" "$HOME/.config/swaylock"
+
+        # Scripts
+        create_symlink "$DOTFILES_DIR/scripts/.local/bin/powermenu.sh" "$HOME/.local/bin/powermenu.sh"
+        create_symlink "$DOTFILES_DIR/scripts/.local/bin/screenshot.sh" "$HOME/.local/bin/screenshot.sh"
+        create_symlink "$DOTFILES_DIR/scripts/.local/bin/clipboard.sh" "$HOME/.local/bin/clipboard.sh"
     fi
 }
 
