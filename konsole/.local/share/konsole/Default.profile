@@ -13,6 +13,7 @@ WordModeAscii=true
 CursorShape=1
 
 [General]
+Command=/bin/bash
 DimWhenInactive=false
 Name=Default
 Parent=FALLBACK/
