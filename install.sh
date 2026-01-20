@@ -303,6 +303,9 @@ setup_symlinks() {
         # Niri Wayland compositor
         create_symlink "$DOTFILES_DIR/niri/.config/niri" "$HOME/.config/niri"
 
+        # Hyprland Wayland compositor (alternative to niri)
+        create_symlink "$DOTFILES_DIR/hyprland/.config/hypr" "$HOME/.config/hypr"
+
         # Waybar status bar
         create_symlink "$DOTFILES_DIR/waybar/.config/waybar" "$HOME/.config/waybar"
 

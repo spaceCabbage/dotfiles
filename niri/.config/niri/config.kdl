@@ -28,7 +28,7 @@ environment {
 // ========================================
 // Startup Programs
 // ========================================
-spawn-at-startup "waybar"
+spawn-at-startup "waybar" "-c" "/home/yehuda/.config/waybar/config-niri.jsonc"
 spawn-at-startup "mako"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "swww" "img" "/home/yehuda/Pictures/sts-130.png"

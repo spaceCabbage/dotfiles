@@ -10,7 +10,11 @@ case "$chosen" in
         swaylock
         ;;
     *Logout*)
-        niri msg action quit
+        if pgrep -x "Hyprland" > /dev/null; then
+            hyprctl dispatch exit
+        else
+            niri msg action quit
+        fi
         ;;
     *Reboot*)
         systemctl reboot
