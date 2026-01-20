@@ -1,8 +1,8 @@
 /* Gruvbox Dark Theme for Rofi */
 
 * {
-    bg:             #282828;
-    bg-alt:         #3c3836;
+    bg:             #282828c8;
+    bg-alt:         #3c3836c1;
     fg:             #ebdbb2;
     fg-alt:         #928374;
     border:         #504945;
@@ -17,10 +17,10 @@
 window {
     width:            600px;
     background-color: @bg;
-    border:           2px;
+    border:           1px;
     border-color:     @border;
-    border-radius:    12px;
-    padding:          20px;
+    border-radius:    10px;
+    padding:          16px;
 }
 
 mainbox {
@@ -41,7 +41,7 @@ prompt {
 }
 
 entry {
-    placeholder:       "Search...";
+    placeholder:       "Inquire...";
     placeholder-color: @fg-alt;
 }
 
@@ -58,7 +58,7 @@ textbox {
 listview {
     lines:            8;
     columns:          1;
-    fixed-height:     false;
+    fixed-height:     true;
     scrollbar:        false;
     spacing:          4px;
 }
