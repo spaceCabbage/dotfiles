@@ -224,7 +224,6 @@ yayi() {
 
 }
 
-alias claude="~/.claude/local/claude"
 
 cheat() {
   echo "!!  Last command"
