@@ -1,0 +1,89 @@
+format = "$username$custom$hostname$directory$git_branch$git_status$all$character"
+
+[username]
+show_always = true
+format = "[${user}](fg:#83a598)"
+style_user = "fg:#83a598"
+style_root = "fg:#fb4934 bold"
+
+[hostname]
+ssh_only = true
+format = "[@](fg:#688080)[${hostname}](fg:#fabd2f) "
+
+[custom.hostname_local]
+command = "hostname"
+when = "[ -z \"$SSH_CONNECTION\" ]"
+format = "[@$output](fg:#688080) "
+
+[line_break]
+disabled = true
+
+[c]
+symbol = " "
+style = "fg:#A8B9CC"
+format = "[$symbol($version )]($style)"
+
+[conda]
+symbol = " "
+style = "fg:#83a598"
+
+[directory]
+read_only = " 󰌾"
+style = "fg:#689d6a"
+truncation_length = 4
+
+
+[docker_context]
+symbol = " "
+style = "fg:#0db7ed"
+
+[python]
+symbol = " "
+style = "fg:#3776AB"
+format = "[$symbol($version )(\\($virtualenv\\) )]($style)"
+
+[golang]
+symbol = " "
+style = "fg:#00ADD8"
+format = "[$symbol($version )]($style)"
+
+[lua]
+symbol = " "
+style = "fg:#83a598"
+format = "[$symbol($version )]($style)"
+
+[memory_usage]
+symbol = "󰍛 "
+style = "fg:#d3869b"
+
+[nodejs]
+symbol = " "
+style = "fg:#8CC84B"
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = " "
+style = "fg:#B7410E"
+format = "[$symbol($version )]($style)"
+
+[git_branch]
+symbol = " "
+style = "fg:#79740e"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+#symbol = " "
+style = "fg:#98971a"
+
+[env_var]
+variable = "PYTHON_ENV"
+symbol = "🐍="
+style = "fg:#928374"
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#bdae93"
+
+[character]
+success_symbol = "[❯](fg:#83a598)"
+error_symbol = "[❯](fg:#fb4934)"

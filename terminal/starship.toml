@@ -1,3 +1,6 @@
+format = "[┌](fg:#688080)$username${custom.hostname_local}$hostname$git_branch$git_status$git_metrics$cmd_duration [─](fg:#688080)$fill[─](fg:#688080) $jobs$direnv$c$conda$docker_context$python$golang$lua$nodejs$rust${custom.mem_low}${custom.mem_mid}${custom.mem_high}$line_break[└](fg:#688080)$directory$character"
+right_format = ""
+
 [username]
 show_always = true
 format = "[${user}](fg:#83a598)"
@@ -14,11 +17,16 @@ when = "[ -z \"$SSH_CONNECTION\" ]"
 format = "[@$output](fg:#688080) "
 
 [line_break]
-disabled = true
+disabled = false
+
+[fill]
+symbol = "─"
+style = "fg:#688080"
 
 [c]
 symbol = " "
 style = "fg:#A8B9CC"
+format = "[$symbol($version )]($style)"
 
 [conda]
 symbol = " "
@@ -37,34 +45,82 @@ style = "fg:#0db7ed"
 [python]
 symbol = " "
 style = "fg:#3776AB"
+format = "[$symbol($version )($virtualenv )]($style)"
 
 [golang]
 symbol = " "
 style = "fg:#00ADD8"
+format = "[$symbol($version )]($style)"
 
 [lua]
 symbol = " "
 style = "fg:#83a598"
+format = "[$symbol($version )]($style)"
 
 [memory_usage]
+disabled = true
+
+[custom.mem_low]
+command = "free -h | awk '/^Mem:/ {gsub(/i$/,\"\",$3); print $3}'"
+when = "[ $(free | awk '/^Mem:/ {printf \"%.0f\", $3/$2*100}') -lt 50 ]"
 symbol = "󰍛 "
-style = "fg:#d3869b"
+style = "fg:#98971a"
+format = "[$symbol$output]($style) "
+
+[custom.mem_mid]
+command = "free -h | awk '/^Mem:/ {gsub(/i$/,\"\",$3); print $3}'"
+when = "[ $(free | awk '/^Mem:/ {printf \"%.0f\", $3/$2*100}') -ge 50 ] && [ $(free | awk '/^Mem:/ {printf \"%.0f\", $3/$2*100}') -lt 80 ]"
+symbol = "󰍛 "
+style = "fg:#fabd2f"
+format = "[$symbol$output]($style) "
+
+[custom.mem_high]
+command = "free -h | awk '/^Mem:/ {gsub(/i$/,\"\",$3); print $3}'"
+when = "[ $(free | awk '/^Mem:/ {printf \"%.0f\", $3/$2*100}') -ge 80 ]"
+symbol = "󰍛 "
+style = "fg:#fb4934"
+format = "[$symbol$output]($style) "
 
 [nodejs]
 symbol = " "
 style = "fg:#8CC84B"
+format = "[$symbol($version )]($style)"
 
 [rust]
 symbol = " "
 style = "fg:#B7410E"
+format = "[$symbol($version )]($style)"
 
 [git_branch]
 symbol = " "
 style = "fg:#79740e"
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
-#symbol = " "
-style = "fg:#98971a"
+format = "[$all_status$ahead_behind]($style)"
+ahead = "⇡$count"
+behind = "⇣$count"
+diverged = "⇕⇡$ahead_count⇣$behind_count"
+conflicted = ""
+untracked = ""
+stashed = ""
+modified = ""
+staged = ""
+renamed = "󰑕"
+deleted = ""
+
+[git_metrics]
+disabled = false
+only_nonzero_diffs = true
+added_style = "fg:#98971a"
+deleted_style = "fg:#fb4934"
+format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
+
+[direnv]
+disabled = false
+format = "[$symbol]($style)"
+symbol = " "
+style = "fg:#fabd2f"
 
 [env_var]
 variable = "PYTHON_ENV"
@@ -74,7 +130,25 @@ style = "fg:#928374"
 [cmd_duration]
 min_time = 2000
 style = "fg:#bdae93"
+format = "[$duration]($style) "
+
+[time]
+disabled = false
+format = "[$time](fg:#928374) "
+time_format = "%-I:%M%p"
+
+[status]
+disabled = false
+format = "[$symbol]($style)"
+symbol = "✘"
+style = "fg:#fb4934"
+
+[jobs]
+disabled = false
+format = "[$symbol$number]($style) "
+symbol = "✦"
+style = "fg:#fabd2f"
 
 [character]
-success_symbol = "[❯](fg:#83a598)"
-error_symbol = "[❯](fg:#fb4934)"
+success_symbol = "[󰁔](fg:#83a598)"
+error_symbol = "[󰁔](fg:#fb4934)"
