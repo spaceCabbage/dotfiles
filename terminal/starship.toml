@@ -1,4 +1,4 @@
-format = "[┌](fg:#688080)$username${custom.hostname_local}$hostname$git_branch$git_status$git_metrics$cmd_duration [─](fg:#688080)$fill[─](fg:#688080) $jobs$direnv$c$conda$docker_context$python$golang$lua$nodejs$rust${custom.mem_low}${custom.mem_mid}${custom.mem_high}$line_break[└](fg:#688080)$directory$character"
+format = "[┌](fg:#688080)$username${custom.hostname_local}$hostname$git_branch$git_status$cmd_duration [─](fg:#688080)$fill[─](fg:#688080) $jobs$direnv$c$conda$docker_context$python$golang$lua$nodejs$rust${custom.mem_low}${custom.mem_mid}${custom.mem_high}$line_break[└](fg:#688080)$directory$character"
 right_format = ""
 
 [username]
@@ -97,24 +97,7 @@ style = "fg:#79740e"
 format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
-format = "[$all_status$ahead_behind]($style)"
-ahead = "⇡$count"
-behind = "⇣$count"
-diverged = "⇕⇡$ahead_count⇣$behind_count"
-conflicted = ""
-untracked = ""
-stashed = ""
-modified = ""
-staged = ""
-renamed = "󰑕"
-deleted = ""
-
-[git_metrics]
-disabled = false
-only_nonzero_diffs = true
-added_style = "fg:#98971a"
-deleted_style = "fg:#fb4934"
-format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
+style = "fg:#98971a"
 
 [direnv]
 disabled = false

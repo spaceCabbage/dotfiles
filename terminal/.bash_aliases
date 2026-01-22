@@ -26,6 +26,7 @@ alias nv='nvim .'
 alias hh=hstr
 alias m="make"
 alias zed='zeditor'
+alias marvin="cd /home/yehuda/Documents/dev/marvin && make up && make marvin"
 
 # DNF
 alias update='sudo dnf update -y --refresh'
