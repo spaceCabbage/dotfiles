@@ -33,6 +33,7 @@ symbol = " "
 style = "fg:#83a598"
 
 [directory]
+home_symbol = "󰟒 "
 read_only = " 󰌾"
 style = "fg:#689d6a"
 truncation_length = 4
