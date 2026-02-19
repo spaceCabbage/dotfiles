@@ -13,4 +13,6 @@ configuration {
     sidebar-mode: true;
 }
 
-@theme "gruvbox-dark"
+//@theme "gruvbox-dark"
+
+@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
