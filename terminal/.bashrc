@@ -63,7 +63,3 @@ if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
 fi
 
-<<<<<<< Updated upstream
-=======
-alias claude="/home/yehuda/.claude/local/claude"
->>>>>>> Stashed changes
