@@ -34,6 +34,10 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/home/yehuda/.local/bin
 . "$HOME/.cargo/env"
 
+if [ -d "$HOME/scripts" ]; then
+    export PATH="$PATH:$HOME/scripts"
+fi
+
 export HSTR_CONFIG=hicolor      # get more colors
 shopt -s histappend             # append new history items to .bash_history
 export HISTFILESIZE=50000       # increase history file size (default is 500)

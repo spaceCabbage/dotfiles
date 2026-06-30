@@ -13,6 +13,7 @@ alias dc="cd"
 alias sl="ls"
 alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
 alias ls="eza --icons --no-permissions --no-user --color=always"
+alias l="ls"
 alias cdr='cd "$(git rev-parse --show-toplevel)"'
 # alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
 # alias cd="z"
