@@ -36,20 +36,6 @@ alias arrr='aria2c --no-conf --max-connection-per-server=16 --split=16 --min-spl
 alias update='sudo dnf update -y --refresh'
 alias install='sudo dnf install'
 
-# ssh
-alias moon="ssh yehuda@10.0.0.7"
-alias ribis="ssh -p 2222 ribis@145.223.116.211"
-alias club="ssh cork@club.corkandcellar.net -p 2222"
-alias kepler="ssh -p 2222 yehuda@kepler"
-alias apollo="ssh yehuda@10.0.0.39"
-alias ray="ssh ray@api.rayati.date -p 2222" 
-alias hubble="ssh yehuda@159.203.91.217"
-alias symp="ssh -p 2222 deploy@symphony.amberlogic.com"
-alias football="ssh yehuda@football.local"
-alias ime="ssh -p 2222 deploy@ime.amberlogic.com"
-alias orbit="ssh -p 2222 yehuda@orbit.benploni.com"
-alias hs="ssh yehuda@headscale.moshavleitzim.com"
-
 # Syncing
 sync_repo() {
     local repo_dir="${1:-.}"
