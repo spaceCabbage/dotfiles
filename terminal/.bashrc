@@ -8,13 +8,9 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-# UTF-8 locale for proper Nerd Font rendering over SSH
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 export EDITOR='nvim'
 export VISUAL='nvim'
-
+export DOCKER_BUILDKIT=1
 export COMPOSE_BAKE=true
 export _ZO_DOCTOR=0
 
@@ -67,3 +63,7 @@ if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
 fi
 
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/yehuda/.local/bin:$PATH"
