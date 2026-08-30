@@ -29,6 +29,7 @@ alias m="make"
 alias zed='zeditor'
 alias marvin="cd /home/yehuda/Documents/dev/marvin && make up && make marvin"
 
+
 alias arrr='aria2c --no-conf --max-connection-per-server=16 --split=16 --min-split-size=1M --bt-max-peers=0 --enable-dht=true --bt-enable-lpd=true --bt-request-peer-speed-limit=0 --seed-time=0'
 
 
@@ -221,4 +222,12 @@ cheat() {
   echo "!$  Last arg"
   echo "!^  First arg"
   echo "!*  All args"
+}
+
+dn() {
+    if [ $# -eq 0 ]; then
+        git diff | diffnav
+    else
+        git diff "$@" | diffnav
+    fi
 }

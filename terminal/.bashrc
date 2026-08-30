@@ -64,6 +64,12 @@ if [ -f ~/.bashrc_local ]; then
 fi
 
 
+<<<<<<< Updated upstream
 
 # Added by Antigravity CLI installer
 export PATH="/home/yehuda/.local/bin:$PATH"
+=======
+# Qwen Code PATH block begin
+export PATH='/home/yehuda/.local/bin':$PATH
+# Qwen Code PATH block end
+>>>>>>> Stashed changes
