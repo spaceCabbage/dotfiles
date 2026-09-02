@@ -160,10 +160,10 @@ alias n="notes"
 alias gc="git clone"
 alias gg="lazygit"
 alias gs="git status --short"
-alias gf="git fetch"
-alias gp="git push"
+alias gp="git pull"
+alias gP="git push"
 alias ga="git add *"
-alias graph="serie"
+
 # javascript
 alias nrd="npm run dev"
 alias nrb="npm run build"
