@@ -17,4 +17,12 @@
    </metadata>
   </info>
  </bookmark>
+ <bookmark href="file:///home/yehuda/Documents/dev/spammer">
+  <title>spammer</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name=""/>
+   </metadata>
+  </info>
+ </bookmark>
 </xbel>

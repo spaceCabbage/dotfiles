@@ -29,13 +29,14 @@ alias m="make"
 alias zed='zeditor'
 alias marvin="cd /home/yehuda/Documents/dev/marvin && make up && make marvin"
 
+<<<<<<< Updated upstream
+=======
+alias agc="agy --context agents.md --workspace ."
+>>>>>>> Stashed changes
 
 alias arrr='aria2c --no-conf --max-connection-per-server=16 --split=16 --min-split-size=1M --bt-max-peers=0 --enable-dht=true --bt-enable-lpd=true --bt-request-peer-speed-limit=0 --seed-time=0'
-
-
-# DNF
-alias update='sudo dnf update -y --refresh'
-alias install='sudo dnf install'
+alias rip='yt-dlp -f "bestaudio" -x --add-metadata --embed-thumbnail --cookies-from-browser brave --download-archive ".music_archive.txt" -N 4'
+alias srip='spotdl --audio youtube-music --format opus --bitrate disable --archive ".music_archive.txt" --threads 4'
 
 # Syncing
 sync_repo() {
