@@ -232,3 +232,7 @@ dn() {
         git diff "$@" | diffnav
     fi
 }
+
+alias todo='grep -nE "^[[:space:]]*- \[[ ~]\]" TODO.md | fzf --delimiter=":" --nth="2.." --preview="bat --color=always --highlight-line {1} --line-range {1}:+20 TODO.md 2>/dev/null || sed -n \"{1},+20p\" TODO.md"'
+
+

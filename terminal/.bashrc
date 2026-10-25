@@ -8,27 +8,33 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# UTF-8 locale for proper Nerd Font rendering over SSH
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 export DOCKER_BUILDKIT=1
 export COMPOSE_BAKE=true
 export _ZO_DOCTOR=0
 
-if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
+if [[ $- == *i* ]]; then
+  bind "set bell-style visible"
+  bind "set completion-ignore-case on"
+  bind "set show-all-if-ambiguous On"
+fi
 
 PROMPT_COMMAND='history -a'
 
 export HISTCONTROL=ignoredups
 shopt -s checkwinsize
-[[ $- == *i* ]] && bind 'set completion-ignore-case on'
-if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-export PATH=$PATH:/home/yehuda/.local/bin
-. "$HOME/.cargo/env"
+export PATH="$HOME/.local/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 if [ -d "$HOME/scripts" ]; then
     export PATH="$PATH:$HOME/scripts"
@@ -62,8 +68,11 @@ export PATH="$HOME/.claude/local:$PATH"
 if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
 fi
+<<<<<<< Updated upstream
 
 
 
 # Added by Antigravity CLI installer
 export PATH="/home/yehuda/.local/bin:$PATH"
+=======
+>>>>>>> Stashed changes
