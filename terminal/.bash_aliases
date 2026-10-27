@@ -59,14 +59,28 @@ sync_repo() {
 
     if [[ "$remote_changes" -gt 0 ]]; then
         echo "Pulling $remote_changes remote change(s)..."
-        git pull --rebase --autostash 2>/dev/null || git pull 2>/dev/null
+        if ! (git pull --rebase --autostash 2>/dev/null || git pull 2>/dev/null); then
+            echo "Error: Pull failed due to conflicts in $repo_dir. Please resolve manually."
+            cd "$original_dir"
+            return 1
+        fi
     else
         echo "No remote changes"
     fi
 
     if [[ "$stashed" == "true" ]]; then
         echo "Reapplying local changes..."
-        git stash pop >/dev/null 2>&1
+        if ! git stash pop >/dev/null 2>&1; then
+            echo "Error: Merge conflict when reapplying stashed changes in $repo_dir! Please resolve manually."
+            cd "$original_dir"
+            return 1
+        fi
+    fi
+
+    if [[ -n $(git ls-files -u) ]] || git grep -Iq '^<<<<<<< ' 2>/dev/null; then
+        echo "Error: Unresolved conflict markers detected in $repo_dir! Aborting commit."
+        cd "$original_dir"
+        return 1
     fi
 
     if [[ -n $(git status -s) ]]; then
