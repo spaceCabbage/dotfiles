@@ -37,8 +37,10 @@ echo -e "Target: ${GREEN}$DOTFILES_DIR${NC}"
 echo ""
 
 # Get sudo upfront and keep it alive
-info "Requesting sudo privileges..."
-sudo -v
+info "Checking sudo privileges..."
+if ! sudo -n true 2>/dev/null; then
+    sudo -v
+fi
 # Keep sudo alive in background
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
