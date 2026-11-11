@@ -2,6 +2,7 @@
 git
 curl
 wget
+unzip
 
 # Shell & Terminal
 tmux

@@ -9,8 +9,13 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # UTF-8 locale for proper Nerd Font rendering over SSH
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+if locale -a 2>/dev/null | grep -qi "en_US\.utf-\?8"; then
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+elif locale -a 2>/dev/null | grep -qi "C\.utf-\?8"; then
+  export LC_ALL=C.UTF-8
+  export LANG=C.UTF-8
+fi
 
 export EDITOR='nvim'
 export VISUAL='nvim'
@@ -45,7 +50,9 @@ shopt -s histappend             # append new history items to .bash_history
 export HISTFILESIZE=50000       # increase history file size (default is 500)
 export HISTSIZE=${HISTFILESIZE} # increase history size (default is 500)
 
-export PATH=$PATH:$(go env GOPATH)/bin
+if command -v go &>/dev/null; then
+  export PATH="$PATH:$(go env GOPATH)/bin"
+fi
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -56,9 +63,9 @@ export ANDROID_HOME=~/Android/Sdk
 export ANDROID_SDK_ROOT=~/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 
-eval "$(starship init bash)"
-eval "$(direnv hook bash)"
-eval "$(zoxide init bash --cmd cd)"
+command -v starship &>/dev/null && eval "$(starship init bash)"
+command -v direnv &>/dev/null && eval "$(direnv hook bash)"
+command -v zoxide &>/dev/null && eval "$(zoxide init bash --cmd cd)"
 export PATH="$HOME/.claude/local:$PATH"
 
 # Welcome message on login

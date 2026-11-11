@@ -11,8 +11,13 @@ alias ts="sudo tailscale"
 alias o="ollama"
 alias dc="cd"
 alias sl="ls"
-alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
-alias ls="eza --icons --no-permissions --no-user --color=always"
+if command -v eza &>/dev/null; then
+    alias ll="eza -lhaF --icons --git --group-directories-first --git-repos --git"
+    alias ls="eza --icons --no-permissions --no-user --color=always"
+else
+    alias ll="ls -lhaF --color=auto"
+    alias ls="ls --color=auto"
+fi
 alias l="ls"
 alias cdr='cd "$(git rev-parse --show-toplevel)"'
 # alias ln="eza -lhF --icons --no-permissions --no-user --no-filesize --color=always -s modified -r"
@@ -22,7 +27,11 @@ alias rmd='/bin/rm  --recursive --force --verbose'
 alias yy="yazi"
 alias ox="oxker"
 alias rg="rg --color=always --smart-case"
-alias cat="bat -P"
+if command -v bat &>/dev/null; then
+    alias cat="bat -P"
+elif command -v batcat &>/dev/null; then
+    alias cat="batcat -P"
+fi
 alias nv='nvim .'
 alias hh=hstr
 alias m="make"
