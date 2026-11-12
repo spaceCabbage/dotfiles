@@ -75,3 +75,7 @@ export PATH="$HOME/.claude/local:$PATH"
 if [ -f ~/.bashrc_local ]; then
   . ~/.bashrc_local
 fi
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/yehuda/.local/bin:$PATH"
